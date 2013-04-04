@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /control_client/
+Disallow: /control_server/
+Disallow: /system/
+Disallow: /stereo/
+Disallow: /tp/

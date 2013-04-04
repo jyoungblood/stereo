@@ -1,0 +1,8 @@
+<?
+
+
+
+class home extends stereo {
+	
+
+}

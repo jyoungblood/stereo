@@ -1,0 +1,8 @@
+<?
+
+
+
+class ajax extends stereo {
+
+
+}

@@ -1,0 +1,41 @@
+/* sensible minimal resets - jy 2010 */
+
+* {margin:0;padding:0;}
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, button { margin: 0; padding: 0; border: 0; font-weight: normal; font-style: normal; font-size: 100%; vertical-align: baseline; }
+a img { border: none; }
+a { outline: none;}
+a:hover{ cursor:pointer; }
+input,input:focus,textarea,textarea:focus,a:focus{ outline:0 none;	}
+
+/* type */
+body{ color: #494949; font-family: sans-serif; }
+a:focus, a:hover { color: #7f7f7f; text-decoration: none; }
+a { color: #7f7f7f; text-decoration: underline; }
+p.last { margin-bottom: 0; }
+strong      { font-weight: bold; }
+em,dfn      { font-style: italic; }
+
+/* frequently-used default classes */
+.visible{ display:block; }
+.hidden{ display:none; }
+.clear{	clear:both; }
+
+
+
+table{
+	border-collapse:collapse;
+}
+
+table td, table th{
+	padding:0;
+}
+
+table tr{
+	vertical-align: top;
+}
+
+
+textarea{
+	resize:none;
+}
+

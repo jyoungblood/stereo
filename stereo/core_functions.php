@@ -40,7 +40,7 @@ function cookie_get($k){
 
 function auth_register($arg){
 	$o = array(
-		'email' => sanitize($arg['email']),
+		'email' => $arg['email'],
 		'pw' => auth_password_set($arg['pw']),
 		'pwr' => base64_encode($arg['pw']),
 		'hash' => hash_generate(),
@@ -53,9 +53,9 @@ function auth_register($arg){
 
 function auth_login($un, $pw){
 	$o = false;
-	$where = "username='".sanitize($un)."'";
+	$where = "username='".$un."'";
 	if (strstr($un,'@')){
-		$where = "email='".sanitize($un)."'";
+		$where = "email='".$un."'";
 	}
 	$a = db_get("auth_user",$where);
 	if (!$a){
@@ -107,7 +107,7 @@ function auth_password_set($pw) {
 	$o = false;
 	if ($pw){
 	  $salt = substr(sha1(num_random().num_random()), 0, 5);
-	  $hash = sha1($salt.sanitize($pw));
+	  $hash = sha1($salt.$pw);
 	  $o = 'sha1$' . $salt . '$' . $hash;		
 	}
   return $o;

@@ -1,0 +1,32 @@
+
+<div style="width: 500px; margin: 0 auto;">
+
+  <br /><br />
+
+  {{> partial-horse}}
+
+  <br /><br />
+	
+	<h2>Things I like to eat</h2>
+
+	<ul>
+		{{#each snacks}}
+		<li>{{this}}</li>
+		{{/each}}
+	</ul>
+
+  <br /><br />
+
+	<h3>Favorite Planets (complex array example)</h3>
+	{{#each planet_group}}
+	<ol>
+		<li>{{one}}</li>
+		<li>{{two}}</li>
+		<li>{{three}}</li>
+		{{#if four}}<li>{{four}}</li>{{/if}}
+	</ol>
+	{{/each}}
+
+
+
+</div>

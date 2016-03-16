@@ -1,14 +1,11 @@
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_URI} !.*\.(ico|txt|css|jpg|jpeg|png|gif|bmp|zip|js|pdf)$
-	RewriteRule ^(.*)$ index.php?p=$1 [L,QSA]
-</IfModule>
 
-ErrorDocument 404 /index.php?p=404
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
 
 AddType text/css cssgz
 AddType text/javascript jsgz
 AddEncoding x-gzip .cssgz .jsgz
 
-php_value allow_url_fopen 1
+# php_value allow_url_fopen 1

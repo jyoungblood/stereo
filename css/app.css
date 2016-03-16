@@ -1,0 +1,8 @@
+@import url("normalize.css");
+@import url("basscss.min.css");
+
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:400,700");
+
+body, body * {
+  font-family: 'Inconsolata', 'Courier New', courier, monospace; 
+}

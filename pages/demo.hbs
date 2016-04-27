@@ -1,0 +1,44 @@
+
+<div style="width: 500px; margin: 0 auto;">
+
+  <br /><br />
+
+  {{> partial-horse}}
+
+  <br /><br />
+	
+	<h3 class="mb1">Things horses like to eat:</h3>
+
+	<ul class="mt0 pl2">
+		{{#each snacks}}
+		<li>{{this}}</li>
+		{{/each}}
+	</ul>
+
+  <br />
+  <hr /><hr />
+  <br />
+
+	<h3>Celestial Bodies <i><small>(complex array example)</small></i></h3>
+	{{#each planet_group}}
+	<h4 class="mb0">{{title}}</h4>
+	<ul class="mt0 pl2">
+		{{#each planets}}
+		<li>{{name}}{{#if note}} <i><small>({{note}})</small></i>{{/if}}</li>
+		{{/each}}
+	</ul>
+	{{/each}}
+
+  <br />
+  <hr /><hr />
+  <br />
+
+	Refer to <a href="http://stereotk.com">http://stereotk.com</a> for complete documentation and more examples.
+  <br /><br />
+  <hr /><hr />
+  <br />
+
+	<br /><br /><br /><br />
+	<br /><br /><br /><br />
+
+</div>

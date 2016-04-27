@@ -19,15 +19,10 @@ require 'stereo/stereo-core.php';
 
 $app = new StereoSystem;
 
-/*
-// db init
-$dbh = stereo_db_init();
-*/
+$GLOBALS['database'] = $app->db_init();
 
 require 'controllers/_global.php';
 require 'controllers/_routes.php';
-
-
 
 $match = $router->match();
 
@@ -38,6 +33,3 @@ if($match && is_callable($match['target'])){
 		'status' => 404
 	));
 }
-
-
-// db cleanup? idk whatever w/ pdo see 0.0.4

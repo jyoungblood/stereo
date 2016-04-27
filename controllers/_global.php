@@ -2,10 +2,12 @@
 
 
 
-// custom global functions
+// -------------------------------------------------------
+//   CUSTOM GLOBAL FUNCTIONS
+// -------------------------------------------------------
 
 /*
-	function hello($o){
+	function literally($o){
 		return $o;
 	}
 */
@@ -16,7 +18,10 @@
 
 
 
-// custom handlebars helpers
+
+// -------------------------------------------------------
+//   CUSTOM HANDLEBARS HELPERS
+// -------------------------------------------------------
 
 /*
 	$engine->addHelper('nl2br', function($template, $context, $args, $source) {

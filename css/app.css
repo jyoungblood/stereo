@@ -1,8 +1,34 @@
-@import url("normalize.css");
-@import url("basscss.min.css");
+@import url("lib/normalize.css");
+@import url("lib/basscss.min.css");
+@import url("lib/basscss.modules.min.css");
 
-@import url("https://fonts.googleapis.com/css?family=Inconsolata:400,700");
 
 body, body * {
-  font-family: 'Inconsolata', 'Courier New', courier, monospace; 
+  font-family: 'Courier New', courier, monospace; 
+}
+
+
+
+/* vertical centering :) */
+html, body{
+	height: 100%;
+}
+.vertical-container {
+	display: table;
+	height: 100%;
+	margin: 0 auto;
+}
+.vertical-center {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+
+.hello-world{
+	font-size: 500%;
+}
+.hello-world a{
+	color: #111;
+	text-decoration: none;
 }

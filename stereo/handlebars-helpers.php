@@ -26,26 +26,44 @@ $engine->addHelper('addslashes', function($template, $context, $args, $source) {
 
 
 
-// format_timestamp
-	// given a js date object (well, mongodb date object)
-		// fixit treat as unix if unix
-  // return raw date obj as "m/d/YYYY - h:m am/pm"
-	// {{format_timestamp data.date_start}}
-$engine->addHelper('format_timestamp', function($template, $context, $args, $source) {
-	$parsed_args = $template->parseArguments($args);
-	return date("m/d/Y - g:ia", strtotime($context->get($parsed_args[0])));
+
+
+
+// parse unix timestamp into human-readable date format (basically php's date())
+$engine->addHelper('date', function($template, $context, $args, $source) {
+  $parsed_args = $template->parseArguments($args);
+  if (count($parsed_args) != 2) {
+    throw new \InvalidArgumentException(
+      '"date" helper expects exactly two arguments.'
+    );
+  }
+
+	$time = $context->get($parsed_args[0]);
+
+	if ($time == "now"){
+		return date($context->get($parsed_args[1]));
+	}else{
+		return date($context->get($parsed_args[1]), $time);
+	}
+
 });
 
 
 
-// format_date_edit
-	// given a js date object
-	// return raw date obj as m/d/YYYY
-	// {{format_date_edit data.date_start}}
-$engine->addHelper('format_date_edit', function($template, $context, $args, $source) {
-	$parsed_args = $template->parseArguments($args);
-	return date("m/d/Y", strtotime($context->get($parsed_args[0])));
+
+
+// transform time/date format (same as date, but it turns a string [like a js date object] into unix time first)
+$engine->addHelper('date_transform', function($template, $context, $args, $source) {
+  $parsed_args = $template->parseArguments($args);
+  if (count($parsed_args) != 2) {
+    throw new \InvalidArgumentException(
+      '"date" helper expects exactly two arguments.'
+    );
+  }
+	return date($context->get($parsed_args[1]), strtotime($context->get($parsed_args[0])));
 });
+
+
 
 
 
@@ -87,9 +105,9 @@ $engine->addHelper('nl2br', function($template, $context, $args, $source) {
 $engine->addHelper('in_array', function($template, $context, $args, $source) {
   $parsed_args = $template->parseArguments($args);
 		if (gettype($context->get($parsed_args[1])) == 'array'){
-			$condition = (in_array($context->get($parsed_args[0]), $context->get($parsed_args[1])));
+			$condition = (in_array($context->get($parsed_args[1]), $context->get($parsed_args[0])));
 		}else{
-			$condition = (in_array($context->get($parsed_args[0]), str_getcsv($context->get($parsed_args[1]))));
+			$condition = (in_array($context->get($parsed_args[1]), str_getcsv($context->get($parsed_args[0]))));
 		}
   if ($condition) {
     $template->setStopToken('else');
@@ -184,7 +202,6 @@ $engine->addHelper('is', function($template, $context, $args, $source) {
   }
   return $buffer;
 });
-
 
 
 

@@ -40,7 +40,7 @@ $app->get('/handlebars-normal', function(){
 Render a Handlebars template (w/ special STEREO helpers)
 
 ```
-$app->get('/handlebars-fancy', function(){
+$app->get('/handlebars-stereo', function(){
   $GLOBALS['app']->render_template(array(
     'template' => 'planets',
     'title' => 'Cool Planets',

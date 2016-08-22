@@ -1,46 +1,52 @@
 
 
+<section class="mw6 center">
 
-<div style="width: 500px; margin: 0 auto;">
 
-  <br /><br />
+	<div class="pv3 tc gray">
 
   {{> partial-horse}}
 
-  <br /><br />
-	
-	<h3 class="mb1">Things horses like to eat:</h3>
+	</div>
 
-	<ul class="mt0 pl2">
-		{{#each snacks}}
-		<li>{{this}}</li>
-		{{/each}}
-	</ul>
 
-  <br />
-  <hr /><hr />
-  <br />
 
-	<h3>Celestial Bodies <i><small>(complex array example)</small></i></h3>
-	{{#each planet_group}}
-	<h4 class="mb0">{{title}}</h4>
-	<ul class="mt0 pl2">
-		{{#each planets}}
-		<li>{{name}}{{#if note}} <i><small>({{note}})</small></i>{{/if}}</li>
-		{{/each}}
-	</ul>
-	{{/each}}
+	<div class="lh-copy">
 
-  <br />
-  <hr /><hr />
-  <br />
+		<div class="pv3">
+		
+			<h3 class="bg-red white pa2 pl3 b">THINGS HORSES LIKE TO EAT</h3>
+		
+			<ul class="mt0 pl4 light-silver">
+				{{#each snacks}}
+				<li><span class="near-black">{{this}}</span></li>
+				{{/each}}
+			</ul>
 
-	Refer to <a href="http://stereotk.com">http://stereotk.com</a> for complete documentation and more examples.
-  <br /><br />
-  <hr /><hr />
-  <br />
+		</div>	
 
-	<br /><br /><br /><br />
-	<br /><br /><br /><br />
+<!-- 	  <div class="bt bw5 light-gray"></div> -->
 
-</div>
+		<div class="mb5">
+		
+			<h3 class="bg-red white pa2 pl3 b">CELESTIAL BODIES <i><small>(complex array example)</small></i></h3>
+			{{#each planet_group}}
+				<h4 class="mb0 pl3 f4">{{title}}</h4>
+				<ul class="mt0 pl4 light-silver">
+					{{#each planets}}
+					<li><span class="near-black">{{name}}{{#if note}} <i><small>({{note}})</small></i>{{/if}}</span></li>
+					{{/each}}
+				</ul>
+				{{/each}}
+		</div>	
+
+
+
+		<div class="mb5 bg-black white pa4 mt3 f4">	
+			Refer to <a href="http://stereotk.com" class="link white underline">http://stereotk.com</a> for complete documentation <span class="light-silver">(and more exciting examples like these)</span>
+		</div>
+
+	</div>
+
+
+</section>

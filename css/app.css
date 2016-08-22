@@ -1,34 +1,11 @@
-@import url("lib/normalize.css");
-@import url("lib/basscss.min.css");
-@import url("lib/basscss.modules.min.css");
 
-
-body, body * {
-  font-family: 'Courier New', courier, monospace; 
-}
-
-
-
-/* vertical centering :) */
 html, body{
 	height: 100%;
 }
-.vertical-container {
-	display: table;
-	height: 100%;
-	margin: 0 auto;
-}
-.vertical-center {
-    display: table-cell;
-    vertical-align: middle;
+
+body, body * {
+	font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
 }
 
 
 
-.hello-world{
-	font-size: 500%;
-}
-.hello-world a{
-	color: #111;
-	text-decoration: none;
-}

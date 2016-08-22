@@ -287,6 +287,31 @@ class StereoSystem {
 
 	// send an email (with mailgun api, if available, otherwise use php mail)
 	public function email_send($input){
+
+		$message_html = false;
+
+		if ($input['template'] || $input['html']){
+			if ($input['template']){
+				$rendered_template = $GLOBALS['engine']->render($input['template'], $input['data']);
+				if ($input['layout']){
+					$layout = explode('[[outlet]]', $GLOBALS['engine']->render('_layouts/' . $input['layout'], $input['data']));
+					$message_html = $layout[0];
+					if (count($layout) > 1){
+						$message_html .= $rendered_template;
+					}
+					$message_html .= $layout[1];
+				}else{
+					$message_html = $rendered_template;
+				}
+			}
+			if ($input['html']){
+				$message_html = $input['message'];					
+			}	
+			$message_text = strip_tags($GLOBALS['app']->br2nl($message_html));	
+		}
+
+
+
 		if ($GLOBALS['settings']['mailgun_api_key']){
 			$message = array(
 				'from' => $input['from'],
@@ -299,9 +324,9 @@ class StereoSystem {
 			if ($input['bcc']){
 				$message['bcc'] = $input['bcc'];
 			}	
-			if ($input['html']){
-				$message['html'] = $input['message'];
-				$message['text'] = strip_tags($input['message']);
+			if ($message_html){
+				$message['html'] = $message_html;
+				$message['text'] = $message_text;
 			}else{
 				$message['text'] = $input['message'];
 			}
@@ -320,9 +345,20 @@ class StereoSystem {
 			return $result;
 		}
 		else{
-			if ($input['html']){
-				$headers .= "MIME-Version: 1.0\r\n" . "Content-type: text/html; charset=utf-8\r\n";
-				$message = $input['message'];
+			if ($message_html){
+				$boundary = uniqid('st');
+				$headers .= "MIME-Version: 1.0\r\n" . "Content-type: multipart/alternative; boundary=" . $boundary . "; charset=utf-8\r\n";
+				$message = $message_text;
+				$message .= "\r\n\r\n--" . $boundary . "\r\n";
+				$message .= "Content-type: text/plain;charset=utf-8\r\n\r\n" . $message_text;
+				$message .= "\r\n\r\n--" . $boundary . "\r\n";
+				$message .= "Content-type: text/html;charset=utf-8\r\n\r\n" . $message_html;
+				$message .= "\r\n\r\n--" . $boundary . "--";
+
+				// research: any benefit to encoding this differently?
+				// https://gist.github.com/davidnknight/3150361
+				// and maybe also: $message = mb_encode_mimeheader($message_text, "utf-8", "Q");
+
 			}else{
 				$message = $input['message'];
 			}
@@ -338,7 +374,22 @@ class StereoSystem {
 			if ($input['reply_to']){
 				$headers 	.= "Reply-To: " . $input['reply_to'] . "\r\n";	
 			}
-			if ($input['to']){
+
+			if ($input['preview']){
+				echo $message;
+			}
+
+			if ($input['debug']){
+				echo '<pre class="bg-black white">';
+				print_r($input);
+				echo "<hr />";
+				echo $headers;
+				echo "<hr />";
+				echo $message;
+				echo '</pre>';
+			}
+
+			if ($input['to'] && !$input['preview']&& !$input['debug']){
 				mail($input['to'], $input['subject'], $message, $headers);
 				return true;
 			}else{
@@ -346,6 +397,141 @@ class StereoSystem {
 			}
 		}
 	}
+
+
+
+
+	// return string as url-safe slug
+	public function url_slug($string){
+		// unicode-compatible chars only (i think)
+		return strtolower(preg_replace('#[^\pL\pN./-]+#', "-", $string)); 
+	}
+
+
+	// return just the domain of a given url (remove "http://","https://","www.")
+	public function url_strip($input){
+		if (!preg_match('#^http(s)?://#', $input)) {
+	    $input = 'http://' . $input;
+		}	
+		$url_parts = parse_url($input);
+		$domain = preg_replace('/^www\./', '', $url_parts['host']);
+		return $domain;
+	}
+
+
+	// add http to url, if needed
+	public function url_validate($url){
+		if (!preg_match('#^http(s)?://#', $url)) {
+	    $o = 'http://' . $url;
+		}
+		else{
+			$o = $url;
+		}
+		return $o;
+	}
+
+
+	// return mysql-formatted date (of a given date, current date if false)
+	public function mysql_date($date = false){
+		if ($date){
+			return date("Y-m-d H:i:s", strtotime($date));
+		}else{
+			return date("Y-m-d H:i:s");
+		}
+	}
+
+
+	// return the id of a video, given a youtube or vimeo url
+	public function video_id($video_url){
+		if(preg_match("/youtube.com/i", $video_url)){
+			$youtube_video = str_replace("https://", "http://", str_replace("m.", "", str_replace("www.", "", $video_url)));
+			$id = str_replace("http://youtube.com/watch?v=", "", $youtube_video);
+			$id = explode("&", $id);
+			$video_id = $id[0];
+		}else{
+			$vimeo_video = str_replace("www.", "", $video_url);
+			$id = str_replace("http://vimeo.com/", "", str_replace("https://vimeo.com/", "", $vimeo_video));
+			$video_id = str_replace("/", "", $id);
+		}
+		return $video_id;
+	}
+
+
+	// replace "<br />" with "\n" (the opposite of nl2br)
+	public function br2nl($string) {
+	  return preg_replace('/\<br(\s*)?\/?\>/i', "\n", $string);
+	} 
+
+
+
+
+	// encode an array (of strings) for storage in mysql (turn it into a string)
+	function array_encode($array){
+		$o = "";
+		foreach ($array as $ar){
+			$o .= "|" . $ar;
+		}
+		return $o;
+	}	
+
+
+	// decode an encoded string and return an array
+	function array_decode($string){
+		return explode("|", $string);
+	}	
+
+
+
+	// ------- pagination (updates in progress) -------------
+	// determine data for query building
+		// current page
+		// number of records to offset
+	public function pagination_query($current_page, $limit){
+		if ($current_page == 0 || $current_page == 1 || $current_page == ''){
+			$o['offset'] = 0;
+			$o['current'] = 1;
+		}else{
+			$o['offset'] = $limit * ($current_page - 1);
+			$o['current'] = $current_page;
+		}
+		return $o;
+	}
+
+	// determine
+		// total number of results pages
+		// current page
+		// url to next page (if available)
+		// url to previous page (if available)
+	public function pagination_links($url_path, $current_page, $total_results, $limit){
+		$total_pages = ceil(($total_results / $limit));
+		$paginate = false;
+	
+		if ($total_pages >= $current_page && $total_pages > 1){
+			$prev = $current_page - 1;
+			$next = $current_page + 1;
+			if ($prev <= 0){
+				$p_prev = false;
+			}else{
+				$p_prev = $url_path . $prev;
+			}
+			if ($next > $total_pages){
+				$p_next = false;
+			}else{
+				$p_next = $url_path . $next;
+			}
+			$paginate = array(
+				"previous" => $p_prev,
+				"next" => $p_next,
+				"current" => $current_page,
+				"total" => $total_pages
+			);
+		}
+		return $paginate;
+	}
+
+
+
+
 
 }
 

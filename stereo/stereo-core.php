@@ -75,7 +75,7 @@ class StereoSystem {
 // -------------------------------------------------------
 
 	// set a cookie
-	public function cookie_set($k,$v,$time=false){
+	public function cookie_set($k, $v, $time = false){
 		$expires = time() + 31536000000;
 		if ($time){
 			$expires = $time;
@@ -109,19 +109,19 @@ class StereoSystem {
 // -------------------------------------------------------
 
 	// make an http request to a given url, send data, and return php array (expects response in json format)
-  public function json_request($url, $data){
+  public function json_request($url, $data = array()){
 		$_o = $GLOBALS['app']->http_request($url, $data);
 	  return json_decode($_o, true);
   }
 
 	// make a json request w/ debugging output
-  public function json_request_debug($url, $data){
+  public function json_request_debug($url, $data = array()){
 		$_o = $GLOBALS['app']->http_request($url, $data);
 	  return $_o;
   }
 
 	// make a json request to a given url, send hard-coded data (for STEREO app patterns)
-  public function api_request($url, $data){
+  public function api_request($url, $data = array()){
 	  if ($GLOBALS['app']->cookie_get('user_id')){
 		  $data['user_id'] = $GLOBALS['app']->cookie_get('user_id');
 		  $data['auth_token'] = $GLOBALS['app']->cookie_get('auth_token');
@@ -132,7 +132,7 @@ class StereoSystem {
   }
 
 	// make an api request w/ debugging output
-  public function api_request_debug($url, $data){
+  public function api_request_debug($url, $data = array()){
 	  if ($GLOBALS['app']->cookie_get('user_id')){
 		  $data['user_id'] = $GLOBALS['app']->cookie_get('user_id');
 		  $data['auth_token'] = $GLOBALS['app']->cookie_get('auth_token');
@@ -143,9 +143,9 @@ class StereoSystem {
   }
 
 	// make an http request to a given url, send data, return the raw result
-	public function http_request($url, $data){
+	public function http_request($url, $data = array()){
 		$data_string = '';
-		foreach($data as $key=>$value) { $data_string .= $key.'='.$value.'&'; }
+		foreach($data as $key=>$value) { $data_string .= $key . '=' . $value . '&'; }
 		rtrim($data_string, '&');
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -354,10 +354,6 @@ class StereoSystem {
 				$message .= "\r\n\r\n--" . $boundary . "\r\n";
 				$message .= "Content-type: text/html;charset=utf-8\r\n\r\n" . $message_html;
 				$message .= "\r\n\r\n--" . $boundary . "--";
-
-				// research: any benefit to encoding this differently?
-				// https://gist.github.com/davidnknight/3150361
-				// and maybe also: $message = mb_encode_mimeheader($message_text, "utf-8", "Q");
 
 			}else{
 				$message = $input['message'];
@@ -680,8 +676,8 @@ function db_delete($table, $where){
 //   ADAPTERS FOR LEGACY SUPPORT (STEREO < 1.0)
 // -------------------------------------------------------
 
-function db_get($table,$where,$numrows=false){
-	$a = db_find($table,$where);
+function db_get($table, $where, $numrows = false){
+	$a = db_find($table, $where);
 	if ($a['data']){
 		$o['r'] = $a['data'];
 	}else{
@@ -693,8 +689,8 @@ function db_get($table,$where,$numrows=false){
 	return $o;
 }
 
-function db_get_raw($table,$where,$numrows=false){
-	$a = db_find($table,$where,array(
+function db_get_raw($table, $where, $numrows = false){
+	$a = db_find($table, $where,array(
 		'raw' => true
 	));
 	if ($a['data']){
@@ -708,8 +704,8 @@ function db_get_raw($table,$where,$numrows=false){
 	return $o;
 }
 
-function db_get_c($a,$b,$c=false){
-	$a = db_find($a,$b,array(
+function db_get_c($a, $b, $c = false){
+	$a = db_find($a, $b, array(
 		'cache' => true
 	));
 	if ($a['data']){

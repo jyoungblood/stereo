@@ -8,7 +8,7 @@
     \/_____/     \/_/    \/_____/   \/_/ /_/   \/_____/   \/_____/ 
                                                                 
 
-  Version: 1.1.1
+  Version: 1.2.0
 	Docs: http://stereotk.com
 
 */
@@ -20,6 +20,8 @@ require 'stereo/stereo-core.php';
 $app = new StereoSystem;
 
 $GLOBALS['database'] = $app->db_init();
+
+$app->authenticate();
 
 require 'controllers/_global.php';
 require 'controllers/_routes.php';

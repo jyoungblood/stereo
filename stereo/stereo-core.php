@@ -177,21 +177,13 @@ class StereoSystem {
 		}else{
 			$data['title'] = $GLOBALS['site_title'];
 		}
-		if ($GLOBALS['app']->cookie_get('user_id')){
-		  $data['user_id'] = $GLOBALS['app']->cookie_get('user_id');
-			if ($GLOBALS['app']->cookie_get('url_title')){
-			  $data['profile_url'] = $GLOBALS['app']->cookie_get('url_title');				
-			}
-			if (password_verify($GLOBALS['site_code'].'-'.$GLOBALS['app']->cookie_get('user_id'), $GLOBALS['app']->cookie_get('auth_token'))){
-				$data['auth'] = true;
-			}
-			if (password_verify($GLOBALS['site_code'], $GLOBALS['app']->cookie_get('admin_token'))){
-				$data['is_admin'] = true;
-			}
-			if (password_verify($GLOBALS['site_code'].'-moderator', $GLOBALS['app']->cookie_get('moderator_token'))){
-				$data['is_moderator'] = true;
-			}
-		}
+
+		$data['user_id'] = $GLOBALS['user_id'];
+		$data['profile_url'] = $GLOBALS['profile_url'];
+		$data['auth'] = $GLOBALS['auth'];
+		$data['is_admin'] = $GLOBALS['is_admin'];
+		$data['is_moderator'] = $GLOBALS['is_moderator'];
+
 		$data['locals'] = $GLOBALS['locals'];
 		$data['year'] = date('Y');
 		$data['site_title'] = $GLOBALS['site_title'];
@@ -257,6 +249,27 @@ class StereoSystem {
 	  return $ip;
 	}
 
+	// determine wether the current user is authenticated/admin/moderator
+	public function authenticate(){
+		if ($GLOBALS['app']->cookie_get('user_id')){
+		  $GLOBALS['user_id'] = $GLOBALS['app']->cookie_get('user_id');
+
+			if ($GLOBALS['app']->cookie_get('url_slug')){
+			  $GLOBALS['profile_url'] = $GLOBALS['app']->cookie_get('url_slug');		
+			}
+			if (password_verify($GLOBALS['site_code'].'-'.$GLOBALS['app']->cookie_get('user_id'), $GLOBALS['app']->cookie_get('auth_token'))){
+				$GLOBALS['auth'] = true;
+			}
+			if (password_verify($GLOBALS['site_code'], $GLOBALS['app']->cookie_get('admin_token'))){
+				$GLOBALS['is_admin'] = true;
+			}
+			if (password_verify($GLOBALS['site_code'].'-moderator', $GLOBALS['app']->cookie_get('moderator_token'))){
+				$GLOBALS['is_moderator'] = true;
+			}
+		}
+		return true;
+	}
+
 	// connect to the database
 	public function db_init(){
 		$dbh = false;
@@ -312,7 +325,7 @@ class StereoSystem {
 
 
 
-		if ($GLOBALS['settings']['mailgun_api_key']){
+		if ($GLOBALS['settings']['mailgun']['api_key']){
 			$message = array(
 				'from' => $input['from'],
 				'to' => $input['to'],
@@ -331,9 +344,9 @@ class StereoSystem {
 				$message['text'] = $input['message'];
 			}
 			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, "https://api.mailgun.net/v3/".$GLOBALS['settings']['mailgun_api_domain']."/messages");
+			curl_setopt($ch, CURLOPT_URL, "https://api.mailgun.net/v3/".$GLOBALS['settings']['mailgun']['domain']."/messages");
 			curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-			curl_setopt($ch, CURLOPT_USERPWD, "api:".$GLOBALS['settings']['mailgun_api_key']."");
+			curl_setopt($ch, CURLOPT_USERPWD, "api:".$GLOBALS['settings']['mailgun']['api_key']."");
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);

@@ -109,49 +109,55 @@ class StereoSystem {
 // -------------------------------------------------------
 
 	// make an http request to a given url, send data, and return php array (expects response in json format)
-  public function json_request($url, $data = array()){
-		$_o = $GLOBALS['app']->http_request($url, $data);
+  public function json_request($url, $data = array(), $options = array()){
+		$_o = $GLOBALS['app']->http_request($url, $data, $options);
 	  return json_decode($_o, true);
   }
 
 	// make a json request w/ debugging output
-  public function json_request_debug($url, $data = array()){
-		$_o = $GLOBALS['app']->http_request($url, $data);
+  public function json_request_debug($url, $data = array(), $options = array()){
+		$_o = $GLOBALS['app']->http_request($url, $data, $options);
 	  return $_o;
   }
 
 	// make a json request to a given url, send hard-coded data (for STEREO app patterns)
-  public function api_request($url, $data = array()){
+  public function api_request($url, $data = array(), $options = array()){
 	  if ($GLOBALS['app']->cookie_get('user_id')){
 		  $data['user_id'] = $GLOBALS['app']->cookie_get('user_id');
 		  $data['auth_token'] = $GLOBALS['app']->cookie_get('auth_token');
 		  $data['admin_token'] = $GLOBALS['app']->cookie_get('admin_token');
 		  $data['moderator_token'] = $GLOBALS['app']->cookie_get('moderator_token');
 	  }
-	  return $GLOBALS['app']->json_request($GLOBALS['settings']['api_root'] . $url, $data);
+	  return $GLOBALS['app']->json_request($GLOBALS['settings']['api_root'] . $url, $data, $options);
   }
 
 	// make an api request w/ debugging output
-  public function api_request_debug($url, $data = array()){
+  public function api_request_debug($url, $data = array(), $options = array()){
 	  if ($GLOBALS['app']->cookie_get('user_id')){
 		  $data['user_id'] = $GLOBALS['app']->cookie_get('user_id');
 		  $data['auth_token'] = $GLOBALS['app']->cookie_get('auth_token');
 		  $data['admin_token'] = $GLOBALS['app']->cookie_get('admin_token');
 		  $data['moderator_token'] = $GLOBALS['app']->cookie_get('moderator_token');
 	  }
-	  return $GLOBALS['app']->json_request_debug($GLOBALS['settings']['api_root'] . $url, $data);
+	  return $GLOBALS['app']->json_request_debug($GLOBALS['settings']['api_root'] . $url, $data, $options);
   }
 
 	// make an http request to a given url, send data, return the raw result
-	public function http_request($url, $data = array()){
+	public function http_request($url, $data = array(), $options = array()){
 		$data_string = '';
 		foreach($data as $key=>$value) { $data_string .= $key . '=' . $value . '&'; }
 		rtrim($data_string, '&');
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch,CURLOPT_URL, $url);
-		curl_setopt($ch,CURLOPT_POST, count($data));
-		curl_setopt($ch,CURLOPT_POSTFIELDS, $data_string);		
+
+		if ($options['type'] == 'GET'){
+			curl_setopt($ch,CURLOPT_URL, $url . '?' .$data_string);
+		}else{
+			curl_setopt($ch,CURLOPT_URL, $url);
+			curl_setopt($ch,CURLOPT_POST, count($data));
+			curl_setopt($ch,CURLOPT_POSTFIELDS, $data_string);			
+		}
+
 		$result = curl_exec($ch);
 		curl_close($ch);
 		return $result;
@@ -598,7 +604,7 @@ function db_find($table, $where, $options = false){
 			$qr['data'][] = $ad;
 			$i++;
 		}
-		if ($numrows){
+		if ($i > 0){
 			$qr['total'] = $i;
 		}		
 	}

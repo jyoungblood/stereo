@@ -1,7 +1,7 @@
 <?php
 
-require 'stereo/AltoRouter.php';
-require 'stereo/Handlebars/Autoloader.php';
+require 'stereo/lib/AltoRouter.php';
+require 'stereo/lib/Handlebars/Autoloader.php';
 
 Handlebars\Autoloader::register();
 use Handlebars\Handlebars;
@@ -18,7 +18,7 @@ $engine = new Handlebars(array(
 		))
 ));
 
-require 'stereo/handlebars-helpers.php';
+require 'stereo/lib/handlebars-helpers.php';
 
 
 

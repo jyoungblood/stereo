@@ -44,9 +44,10 @@ rm -Rf .git
 4. Build something cool!
 
 ### Routing + template example
-#### (render a handlebars template with a global base template with data from PHP arrays)
 
-in ./controllers/_routes.php:
+Let's render a handlebars template with a global base template with data from PHP arrays!
+
+First, in ./controllers/_routes.php:
 ```
 $app->get('/favorite-planets', function(){
 
@@ -82,7 +83,7 @@ $app->get('/favorite-planets', function(){
 });
 ```
 
-in ./pages/planets.hbs:
+and then in ./pages/planets.hbs:
 ```
 <div class="mw8 center pa5">
   Greetings, {{reader_name}}! Allow me to provide you with a list of my favorite planets:
@@ -95,7 +96,9 @@ in ./pages/planets.hbs:
 ```
 
 Can you guess what will be rendered? 
+
 Go here to find out: [https://stereotk.com/favorite-planets](https://stereotk.com/favorite-planets)
+
 
 
 ### Other responses you can make:

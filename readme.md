@@ -3,11 +3,11 @@
 
 # STEREO Internet Tool Kit 
 ## v1.3.0
-
 ##### The easiest way to make web sites with PHP (and friends)
 
+---
 
-### FEATURES
+## FEATURES
 - Easy and flexible routing system with pretty urls 😍
 - Powerful [Handlebars](http://handlebarsjs.com/) templates
 - Convenient MYSQL CRUD functionality
@@ -19,7 +19,7 @@
 
 
 
-### INSTALLATION
+## INSTALLATION
 STEREO is designed to function with most LAMP stacks, and will support very old systems. Minimum requirements: PHP: 5.3, MYSQL: 3.0, Apache: 2.4.
 
 *\* NGINX is also supported, see docs for configuration*
@@ -37,14 +37,14 @@ rm -Rf .git
 
 
 
-### GETTING STARTED
+## GETTING STARTED
 1. Edit your global settings (site title, DB connection): ./settings.php
 2. Set up some routes: ./controllers/_routes.php
 3. Make some templates: ./pages/index.hbs
 4. Build something cool!
 
-##### Routing + template example
-###### (render a handlebars template with a global base template with data from PHP arrays)
+### Routing + template example
+#### (render a handlebars template with a global base template with data from PHP arrays)
 
 in ./controllers/_routes.php:
 ```
@@ -98,7 +98,7 @@ Can you guess what will be rendered?
 Go here to find out: [https://stereotk.com/favorite-planets](https://stereotk.com/favorite-planets)
 
 
-##### Other responses you can make:
+### Other responses you can make:
 
 Render a single PHP / HTML document:
 ```
@@ -137,12 +137,12 @@ Check out the full documentation to see everything you can do: [https://docs.ste
 
 
 
-### CONTRIBUTING
+## CONTRIBUTING
 Contributions, issues, and feature requests are welcomed and appreciated (although a timely response is not guaranteed). Check the [issues page](https://gitlab.com/hxgf/stereo/issues) if you're interested in helping out 🙌 🙏
 
 
 
-### LICENSE
+## LICENSE
 Copyright © 2019 [HXGF](https://hxgf.io).
 This project is [MIT](https://gitlab.com/hxgf/stereo/blob/master/stereo/license.md) licensed.
 

@@ -3,7 +3,6 @@
 
 # STEREO Internet Tool Kit 
 ## v1.3.0
-##### The easiest way to make web sites with PHP (and friends)
 
 ---
 

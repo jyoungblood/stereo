@@ -1,10 +1,9 @@
-
 ![headphones icon](https://stereotk.com/images/stereo-headphones-black-small.png)
 
 # STEREO Internet Tool Kit 
 ## v1.3.0
 
----
+
 
 ## FEATURES
 - Easy and flexible routing system with pretty urls 😍

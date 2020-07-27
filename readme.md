@@ -1,7 +1,7 @@
 ![headphones icon](https://stereotk.com/images/stereo-headphones-black-small.png)
 
 # STEREO Internet Tool Kit
-### v1.3.0
+### v1.4.0
 
 ---
 
@@ -21,7 +21,7 @@
 ## INSTALLATION
 STEREO is designed to function with most LAMP stacks, and will support very old systems. Minimum requirements: PHP: 5.3, MYSQL: 3.0, Apache: 2.4. *(NGINX is also supported, see docs for configuration)*
 
-**\*\* Easiest installation: [download the latest release](https://gitlab.com/hxgf/stereo/-/archive/1.3.0/stereo-1.3.0.zip)** and put the files on your server or dev environment 👍
+**\*\* Easiest installation: [download the latest release](https://gitlab.com/hxgf/stereo/-/archive/1.4.0/stereo-1.4.0.zip)** and put the files on your server or dev environment 👍
 
 Next-easiest installation: clone the latest version of the master branch with git:
 ```
@@ -143,6 +143,6 @@ Contributions, issues, and feature requests are welcomed and appreciated (althou
 
 
 ## LICENSE
-Copyright © 2019 [HXGF](https://hxgf.io).
+Copyright © 2010-2020 [HXGF](https://hxgf.io).
 This project is [MIT](https://gitlab.com/hxgf/stereo/blob/master/stereo/license.md) licensed.
 

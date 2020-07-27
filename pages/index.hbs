@@ -1,6 +1,15 @@
-
-<div class="dt h-100 center">
-  <div class="dtc v-mid">
-	  <span class="f-headline">{{welcome_icon}}</span>
+<div class="flex h-screen p-8" x-data="welcome()">
+  <div class="m-auto max-w-xl">
+    <div class="text-6xl text-center cursor-pointer" @click="rain_spell()">{{welcome_icon}}</div>
   </div>
 </div>
+		
+<script>
+function welcome(){
+	return {
+		rain_spell: function(){
+			alert('o Gabriel fac pluat. o poseidon, ut pluvia. ne pluat o Neptune beatitudinis. o deus, nam ego filius tuus fac pluvia. Sic fiat semper.')
+		}
+	}
+}
+</script>

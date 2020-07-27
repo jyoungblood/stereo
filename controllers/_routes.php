@@ -3,7 +3,7 @@
 
 $app->get('/', function(){
 
-	$welcome_icons = array('⊭','♥','☼','⁜','⁙','⁕');
+	$welcome_icons = array('⦛','⦝','⦤','⦥','⧥','⧷','⨬','⨳','⩸','▨','◯','◉','◎','𐌆','♥','☼','⁙');
 
 	$GLOBALS['app']->render_template(array(
 		'template' => 'index',

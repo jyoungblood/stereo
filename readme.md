@@ -133,7 +133,7 @@ $app->get('/party', function(){
 
 STEREO has abstraction tools to help you build all kinds of functionality!
 
-Check out the full documentation to see everything you can do: [https://docs.stereotk.com](https://docs.stereotk.com)
+Check out the full documentation to see everything you can do: [https://stereotk.com/docs](https://stereotk.com/docs)
 
 
 

@@ -1,22 +1,21 @@
-/* 		SM		*/
-@media (min-width: 640px) {
+
+/* 		MEDIUM		*/
+@media screen and (min-width: 48em) and (max-width: 64em){
 
 }
 
 
-/* 		MD		*/
-@media (min-width: 768px) {
-  
-}	
+/* 		NOT SMALL		*/
+@media screen and (min-width: 48em){
 
-
-/* 		LG		*/
-@media (min-width: 1024px) {
-  
-}	
-
-
-/* 		XL		*/
-@media (min-width: 1280px) {
-  
 }
+
+
+/* 		LARGE		*/
+@media screen and (min-width: 64em){
+
+}
+
+
+
+

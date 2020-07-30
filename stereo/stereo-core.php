@@ -76,7 +76,7 @@ class StereoSystem {
 
 	// set a cookie
 	public function cookie_set($k, $v, $time = false){
-		$expires = time() + 31536000000;
+		$expires = time() + 31536000;
 		if ($time){
 			$expires = $time;
 		}

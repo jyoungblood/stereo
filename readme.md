@@ -21,16 +21,13 @@
 ## INSTALLATION
 STEREO is designed to function with most LAMP stacks, and will support very old systems. Minimum requirements: PHP: 5.3, MYSQL: 3.0, Apache: 2.4. *(NGINX is also supported, see docs for configuration)*
 
-**\*\* Easiest installation: [download the latest release](https://gitlab.com/hxgf/stereo/-/archive/1.4.0/stereo-1.4.0.zip)** and put the files on your server or dev environment 👍
+**\*\* Easiest installation: [download the latest release](https://github.com/hxgf/stereo/archive/refs/tags/1.4.0.zip)** and put the files on your server or dev environment 👍
 
-Next-easiest installation: clone the latest version of the master branch with git:
+Next-easiest installation: clone the latest version of the master branch with degit
 ```
-git clone https://gitlab.com/hxgf/stereo.git .
+npx degix hxgf/stereo
 ```
-...just remember to remove this repo from your actual project:
-```
-rm -Rf .git
-```
+
 
 
 
@@ -138,11 +135,11 @@ Check out the full documentation to see everything you can do: [https://stereotk
 
 
 ## CONTRIBUTING
-Contributions, issues, and feature requests are welcomed and appreciated (although a timely response is not guaranteed). Check the [issues page](https://gitlab.com/hxgf/stereo/issues) if you're interested in helping out 🙌 🙏
+Contributions, issues, and feature requests are welcomed and appreciated (although a timely response is not guaranteed). Check the [issues page](https://github.com/hxgf/stereo/issues) if you're interested in helping out 🙌 🙏
 
 
 
 ## LICENSE
 Copyright © 2010-2020 [HXGF](https://hxgf.io).
-This project is [MIT](https://gitlab.com/hxgf/stereo/blob/master/stereo/license.md) licensed.
+This project is MIT licensed.
 

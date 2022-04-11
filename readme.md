@@ -25,7 +25,7 @@ STEREO is designed to function with most LAMP stacks, and will support very old 
 
 Next-easiest installation: clone the latest version of the master branch with degit
 ```
-npx degix hxgf/stereo
+npx degit hxgf/stereo
 ```
 
 

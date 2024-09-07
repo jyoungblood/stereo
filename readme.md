@@ -26,8 +26,9 @@ It's primarily intended for solo developers working in "small scale" environment
   - Simple HTTP client - [HTTP Request](https://github.com/jyoungblood/http-request) 
   - Misc utility functions - [X-Utilities](https://github.com/jyoungblood/x-utilities)
     
-- TailwindCSS - [TailwindCSS](https://tailwindcss.com/)
-- AlpineJS - [AlpineJS](https://alpinejs.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
+
+- [AlpineJS](https://alpinejs.dev/)
     
 - Simple organization - folders for css, js, images, templates, and controllers
 

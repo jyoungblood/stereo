@@ -1,5 +1,0 @@
-<div class="alert alert-danger" style="background-color: <?php echo $color; ?>; padding-left: 100px;">
- <div><?php echo $title; ?></div>
- <?php echo $slot; ?>
-
-</div>

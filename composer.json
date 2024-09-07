@@ -16,8 +16,10 @@
     "starter",
     "slim4",
     "slim-framework",
-    "lightncandy",
-    "blade"
+    "blade",
+    "bladeone",
+    "tailwindcss",
+    "alpinejs"
   ],
   "scripts": {
     "start": "php -S localhost:8080"

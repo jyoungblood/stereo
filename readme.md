@@ -1,13 +1,13 @@
-# S L I M E
+# STEREO
 
-### Starter kit for building web applications with Slim PHP Framework
+### A pragmatic toolkit for internet makers
 
-- Documentation: [https://slime.technology/](https://slime.technology/)
-- Demo SRC: [https://github.com/jyoungblood/slime-demo](https://github.com/jyoungblood/slime-demo)
-
+- Documentation: [https://stereotk.com/](https://stereotk.com/)
 
 
-SLIME is a highly opinionated boilerplate for Slim applications. It's designed for solo developers working in "small scale" environments. While it produces a reliable final product, this configuration focuses on developer velocity, making it easy to provide value quickly without introducing unnecessary technical overhead.
+STEREO is a "full stack" tool kit designed to make the process of developing dynamic server-rendered web applications significantly easier and more enjoyable.
+
+It's designed for solo developers working in "small scale" environments. While it produces a reliable final product, this configuration focuses on developer velocity, making it easy to provide value quickly without introducing unnecessary technical overhead.
 
 
 
@@ -16,7 +16,7 @@ SLIME is a highly opinionated boilerplate for Slim applications. It's designed f
 
 - [Slim v4](https://www.slimframework.com/) (w/ [Slim PSR-7](https://github.com/slimphp/Slim-Psr7))
 
-- Handlebars templating - [Lightncandy](https://github.com/zordius/lightnCandy)    
+- Blade templating - [BladeOne](https://github.com/eftec/bladeone)
 
 - View rendering helpers - [Slime Render](https://github.com/jyoungblood/slime-render)
 
@@ -26,19 +26,20 @@ SLIME is a highly opinionated boilerplate for Slim applications. It's designed f
   - Simple HTTP client - [HTTP Request](https://github.com/jyoungblood/http-request) 
   - Misc utility functions - [X-Utilities](https://github.com/jyoungblood/x-utilities)
     
-- Minimal front-end boilerplate & utility library options - [scratch](https://github.com/jyoungblood/scratch)
+- TailwindCSS - [TailwindCSS](https://tailwindcss.com/)
+- AlpineJS - [AlpineJS](https://alpinejs.dev/)
     
 - Simple organization - folders for css, js, images, templates, and controllers
 
 - Blank CSS and JS placeholder files
 
-- [.env](https://github.com/jyoungblood/slime/blob/master/.env.example) - helpful basic variables and settings, pre-wired with [phpdotenv](https://github.com/vlucas/phpdotenv)
+- [.env](https://github.com/jyoungblood/stereo/blob/master/.env.example) - helpful basic variables and settings, pre-wired with [phpdotenv](https://github.com/vlucas/phpdotenv)
 
-- [index.php](https://github.com/jyoungblood/slime/blob/master/index.php) - initialized Slim application w/ middleware, db connection, and default 404 configuration
+- [index.php](https://github.com/jyoungblood/stereo/blob/master/index.php) - initialized Slim application w/ middleware, db connection, and default 404 configuration
 
-- [.htaccess](https://github.com/jyoungblood/slime/blob/master/.htaccess) - routes all non-file urls to index, forces https, and uses gzip for static assets (if available)
+- [.htaccess](https://github.com/jyoungblood/stereo/blob/master/.htaccess) - routes all non-file urls to index, forces https, and uses gzip for static assets (if available)
 
-- [.gitignore](https://github.com/jyoungblood/slime/blob/master/.gitignore) - ignores `/vendor`, `.env`, `.vscode`, `error_log`, and `.DS_Store`
+- [.gitignore](https://github.com/jyoungblood/stereo/blob/master/.gitignore) - ignores `/vendor`, `.env`, `.vscode`, `error_log`, and `.DS_Store`
 
 
 
@@ -57,7 +58,7 @@ SLIME is a highly opinionated boilerplate for Slim applications. It's designed f
 ## Installation
 Easy install with composer:
 ```
-composer create-project jyoungblood/slime new-project-name
+composer create-project jyoungblood/stereo new-project-name
 ```
 
 Initialize the .env file, using the boilerplate example:
@@ -69,31 +70,29 @@ mv .env.example .env
 
 
 ## Usage
-Although SLIME is currently not intended for local development workflows, you're welcome to try your luck with PHP's built-in server:
+STEREO will work locally with PHP's built-in server:
 ```
-php -S localhost:6969
+php -S localhost:8080
 ```
+
+which is also conveniently aliased with a composer script:
+```
+composer start
+```
+
 Alternatively, you could use [Herd](https://herd.laravel.com/), which is an excellent tool for local development.
 
 
-See [controllers/index.php](https://github.com/jyoungblood/slime/blob/master/controllers/index.php) for an example of routing and template rendering.
+See [controllers/index.php](https://github.com/jyoungblood/stereo/blob/master/controllers/index.php) for an example of routing and template rendering.
 
-See [templates/index.html](https://github.com/jyoungblood/slime/blob/master/templates/index.html) and [templates/_layouts/base.html](https://github.com/jyoungblood/slime/blob/master/templates/_layouts/base.html) for examples using handlebars and layouts.
+
 
 Helpful resources:
-- [Handlebars Cookbook](https://zordius.github.io/HandlebarsCookbook/)
+- [BladeOne Manual](https://github.com/EFTEC/BladeOne/wiki/BladeOne-Manual)
 - [Slim v4 Routing](https://www.slimframework.com/docs/v4/objects/routing.html)
 - [DB Kit CRUD operations](https://github.com/jyoungblood/dbkit)
-- [Tachyons Docs](https://tachyons.io/docs/)
-
-Check out [slime-demo](https://github.com/jyoungblood/slime-demo) to see more examples of the kind of things you can do with SLIME!
-
----
-
-Slime is heavily inspired by [STEREO](https://stereotk.com/), an older toolkit I've assembled and maintained, which has helped me to be very productive and make a decent living over the years. 
-
-I hope these tools and the workflows they enable can help some of you as much as they've helped me : )
-
+- [TailwindCSS Docs](https://tailwindcss.com/docs)
+- [AlpineJS Docs](https://alpinejs.dev/docs/introduction)
 
 
 

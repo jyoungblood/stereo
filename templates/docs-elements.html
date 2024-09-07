@@ -1,0 +1,410 @@
+<section class="mb5 pt4" id="templates">
+
+  <div class="bt bw3 mb2 b--near-black"></div>
+
+  <div class="f2 fw7 mb3">TEMPLATES</div>
+
+
+
+
+
+
+
+  <p class="lh-copy">
+
+
+
+
+
+
+    <!-- 		fixit copy -->
+    <!-- <div class="mb3 black-50 lh-copy">something something templates go in ./pages and you can call them
+      whatever you want. you can organize this however you want, too! link to handlebars docs for more info.</div> -->
+
+
+  <div class="pt3 fw7 f3 mb2">Basic Variables</div>
+  <!-- 		fixit copy -->
+  <p class="lh-copy">the simplest thing to do. if you use render_template, stereo includes a few by default (year, etc)
+    as well
+    as a few special things (is_admin, auth, user_id, etc) (title [uses the site title by default, so it's kinda
+    optional])</p>
+
+  <div class="cf">
+    <div class="fl w-50 pr3">
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">php</p>
+
+
+      <pre><code class="language-php">
+	$app->get('/variable-example', function(){
+	  $GLOBALS['app']->render_template(array(
+	    'template' => 'demo',
+	    'data' => array(
+	      'fish' => 'salmon',
+	      'dish' => 'paella',
+	      'planet' => 'Nibiru'
+	    )
+	  ));
+	});
+</code></pre>
+
+    </div>
+
+
+    <div class="fl w-50">
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">hbs (note about literals { { { } } } vs { { } } -- by default hbars doesn't parse html tags, so
+        if you
+        want to have them rendered, do this)</p>
+
+      <pre><code class="language-handlebars">
+	&lt;h2&gt;Simple Variables Example&lt;/h2&gt;
+	&lt;h3&gt;Cool Fish: &#123;&#123;fish&#125;&#125;&lt;/h3&gt;
+	&lt;h3&gt;Cool Dish: &#123;&#123;dish&#125;&#125;&lt;/h3&gt;
+	&lt;h3&gt;Cool Planet: &#123;&#123;planet&#125;&#125;&lt;/h3&gt;
+</code></pre>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="pt3 fw7 f3 mb2">Iterating Arrays</div>
+  <!-- fixit copy -->
+  <p class="lh-copy">it's hella easy, just like a foreach loop. you can even nest the arrays to infinity (and beyond)
+    (sorry) (it
+    can be as simple or complex as you want to make it) (see the demo controller/templates for an example of more
+    complex array iteration)</p>
+
+  <div class="cf">
+    <div class="fl w-50 pr3">
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">php (simple & complex example from demo)</p>
+
+      <pre><code class="language-php">
+	$app->get('/array-example', function(){
+	  $GLOBALS['app']->render_template(array(
+	    'template' => 'demo',
+	    'data' => array(
+	      'snacks' => array(
+	        'Carrots',
+	        'Hay',
+	        'Sugar Cubes',
+	        'Oats',
+	        'Apples',
+	        'Weaker Horses'
+	      )
+	    )
+	  ));
+	});
+</code></pre>
+
+    </div>
+
+
+    <div class="fl w-50">
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">hbs (simple & complex example from demo)</p>
+
+
+      <pre><code class="language-handlebars">
+	&lt;ul&gt;
+	  &#123;&#123;#each snacks&#125;&#125;
+	  &lt;li&gt;&#123;&#123;this&#125;&#125;&lt;/li&gt;
+	  &#123;&#123;/each&#125;&#125;
+	&lt;/ul&gt;
+</code></pre>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <div class="pt3 fw7 f3 mb2">Simple Logic</div>
+  <!-- 		fixit copy -->
+  <p class="lh-copy">you can do some simple logic to check if a variable exists (or has value). if you would like to do
+    more complex
+    logic, check out [if_either], [in_array], [is]</p>
+
+
+  <div class="cf">
+    <div class="fl w-50 pr3">
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">php</p>
+
+      <pre><code class="language-php">
+	$app->get('/logic-example', function(){
+	  $GLOBALS['app']->render_template(array(
+	    'template' => 'demo',
+	    'data' => array(
+	      'fish' => 'salmon',
+	      'dish' => 'paella',
+	    )
+	  ));
+	});
+</code></pre>
+
+    </div>
+
+
+    <div class="fl w-50">
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">hbs (if/else, unless, (normal hbars logic, link to hbars docs) maybe is & link to helpers)</p>
+
+
+      <pre><code class="language-handlebars">
+	&#123;&#123;#if fish&#125;&#125;
+	 Salmon is available
+	&#123;&#123;else&#125;&#125; // this won't show:
+	 No salmon for you.
+	&#123;&#123;/if&#125;&#125;
+	
+	&#123;&#123;#unless snacks&#125;&#125;
+	 No snacks available. We have &#123;&#123;dish&#125;&#125, though.
+	&#123;&#123;else&#125;&#125; // this won't show:
+	 Look at all the snack options:
+	 &#123;&#123;#each snacks&#125;&#125;
+	 - &#123;&#123;this&#125;&#125; &lt;br /&gt;
+	 &#123;&#123;/each&#125;&#125;
+	&#123;&#123;/unless&#125;&#125;
+</code></pre>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <div class="pt3 fw7 f3 mb2">Partials</div>
+  <!-- fixit copy -->
+  <p class="lh-copy">You can include templates in other templates! That is neat! all your partials need to be in the
+    _partials
+    directory, but you can organize that however you want!</p>
+
+  <div class="cf">
+    <div class="fl w-50 pr3">
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">normal php whatever example</p>
+
+      <pre><code class="language-php">
+	$app->get('/partials-example', function(){
+	  $GLOBALS['app']->render_template(array(
+	    'template' => 'demo',
+	    'data' => array(
+	      'fish' => 'salmon',
+	      'dish' => 'paella',
+	      'planet' => 'Nibiru'
+	    )
+	  ));
+	});
+</code></pre>
+
+    </div>
+
+
+    <div class="fl w-50">
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">hbs</p>
+
+
+      <pre><code class="language-handlebars">
+	&lt;h2&gt;Demo page (rendered with partial from separate template)&lt;/h2&gt;
+	
+	&lt;h3&gt;Fish: &#123;&#123;fish&#125;&#125;&lt;/h3&gt;
+	&lt;h3&gt;Dish: &#123;&#123;dish&#125;&#125;&lt;/h3&gt;
+	
+	&#123;&#123;&gt; planets-partial&#125;&#125;
+</code></pre>
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">hbs (partial code) (see how it has access to the same data?)</p>
+
+
+      <pre><code class="language-handlebars">
+	&lt;ul&gt;
+	  &#123;&#123;#each planets&#125;&#125;
+	  &lt;li&gt;&#123;&#123;this&#125;&#125;&lt;/li&gt;
+	  &#123;&#123;/each&#125;&#125;
+	&lt;/ul&gt;
+</code></pre>
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="pt3 fw7 f3 mb2">Global Layouts</div>
+  <!-- fixit copy -->
+  <p class="lh-copy">if you want to use a global header footer, you can! you can define as many global wrappers/layouts
+    as you
+    want (like express, django, ember, whatever...wow!) if you leave the "layout" parameter blank, STEREO will use the
+    layout in ./pages/_layouts/base.hbs by default. your content will be rendered where the [[outlet]] part is</p>
+
+
+
+  <!-- 				fixit copy, code comments -->
+  <p class="lh-copy">php example</p>
+
+  <pre><code class="language-php">
+	$app->get('/layouts-example', function(){
+	  $GLOBALS['app']->render_template(array(
+	    'template' => 'demo',
+	    'title' => 'Site Title Whatever',
+	    'layout' => 'admin',  // false for nothing, base by default
+	    'data' => array(
+	      'fish' => 'salmon',
+	      'dish' => 'paella',
+	      'planets' => array(
+	        'Mercury', 'Venus', 'Earth', 'Nibiru'
+	      )
+	    )
+	  ));
+	});
+</code></pre>
+
+
+  <!-- 				fixit copy, code comments -->
+  <p class="lh-copy">hbs (wrapper)</p>
+
+
+  <pre><code class="language-handlebars">
+	&lt;!DOCTYPE html&gt;
+	&lt;html&gt;
+	&lt;head&gt;
+	  &lt;title&gt;&#123;&#123;title&#125;&#125;&lt;/title&gt;
+	  &lt;meta charset="utf-8" /&gt;
+	  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" /&gt;
+	  &lt;link rel="stylesheet" href="/css/app.css" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+	
+	  &lt;div class="header"&gt;&lt;h1&gt;Site Title Whatever&lt;/h1&gt;&lt;/div&gt;
+	
+	  &lt;div class="container"&gt;
+	    [[outlet]]  // this is where the content will be rendered
+	  &lt;/div&gt;
+	
+	  &lt;div class="footer"&gt;(c) &#123;&#123;year&#125;&#125; -- All rights reserved or whatever.&lt;/div&gt;
+	
+	&lt;script src="/js/vendor/jquery.min.js"&gt;&lt;/script&gt;
+	&lt;script src="/js/app.js"&gt;&lt;/script&gt;
+	
+	&lt;/body&gt;
+	&lt;/html&gt;
+</code></pre>
+
+
+  <!-- 				fixit copy, code comments -->
+  <p class="lh-copy">hbs</p>
+
+  <pre><code class="language-handlebars">
+	&lt;h2&gt;Demo page (rendered with global wrapper)&lt;/h2&gt;
+	
+	&lt;h3&gt;Fish: &#123;&#123;fish&#125;&#125;&lt;/h3&gt;
+	&lt;h3&gt;Dish: &#123;&#123;dish&#125;&#125;&lt;/h3&gt;
+	
+	&lt;ul&gt;
+	  &#123;&#123;#each planets&#125;&#125;
+	  &lt;li&gt;&#123;&#123;this&#125;&#125;&lt;/li&gt;
+	  &#123;&#123;/each&#125;&#125;
+	&lt;/ul&gt;
+</code></pre>
+
+
+
+
+  <div class="pt3 fw7 f3 mb2">Template Locals (Global Variables)</div>
+  <!-- fixit copy -->
+  <p class="lh-copy">need to make an arbitrary variable/array available to all the templates? use $GLOBALS['locals']
+    (hold for
+    laugh)
+    but seriously, folks, treat it like an array and whatever you need. and if it's an array is something you can
+    iterate over. and, of course, all of this is available to the application as $GLOBALS['locals']['numbers'] or
+    whatever</p>
+
+  <div class="cf">
+    <div class="fl w-50 pr3">
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">php example</p>
+
+      <pre><code class="language-php">
+	$GLOBALS['locals']['eat_this'] = "breakfast";
+</code></pre>
+    </div>
+
+
+    <div class="fl w-50">
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">hbs</p>
+
+      <pre><code class="language-handlebars">
+	Let's have &#123;&#123;locals.eat_this&#125;&#125; for dinner.
+</code></pre>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="cf">
+    <div class="fl w-50 pr3">
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">php example</p>
+
+      <pre><code class="language-php">
+	$GLOBALS['locals']['colors'] = array('red', 'salmon', 'lilac', 'azul');
+</code></pre>
+
+    </div>
+
+
+    <div class="fl w-50">
+
+      <!-- 				fixit copy -->
+      <p class="lh-copy">hbs</p>
+
+      <pre><code class="language-handlebars">
+	&lt;ul&gt;
+	  &#123;&#123;#each locals.colors&#125;&#125;
+	  &lt;li&gt;&#123;&#123;this&#125;&#125;&lt;/li&gt;
+	  &#123;&#123;/each&#125;&#125;
+	&lt;/ul&gt;
+</code></pre>
+
+    </div>
+
+  </div>
+
+
+
+</section>

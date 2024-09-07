@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="h-100">
+
+<head>
+
+  <title>{{title}}</title>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.css" />
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <!-- <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"> -->
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://unpkg.com/alpinejs" defer></script> -->
+  <!-- <script src="https://unpkg.com/htmx.org@1.7.0" integrity="sha384-EzBXYPt0/T6gxNp0nuPtLkmRpmDBbjg6WmCUZRLXBBwYYmwAUxzlSGej0ARHX0Bo" crossorigin="anonymous" defer></script> -->
+
+<style>
+
+body {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.sys-blue {
+  color: blue;
+}
+
+a.hover-underline:hover,
+a.hover-underline:hover span {
+  text-decoration: underline;
+}
+
+.fs80{
+  font-size: 80%;
+}
+
+</style>
+
+
+
+
+
+
+<!-- custom version of prism: https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+apacheconf+handlebars+markup-templating+nginx+php+sql&plugins=normalize-whitespace+toolbar+copy-to-clipboard -->
+
+<link rel="stylesheet" href="/css/prism.dw.css" />
+<script src="/js/prism.dw.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap" rel="stylesheet">
+
+<!-- <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet"> -->
+
+<style>
+  pre[class*="language-"] {
+    border-radius: 0;
+  }
+
+  code[class*="language-"],
+  pre[class*="language-"] {
+    /* 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; */
+    font-family: 'Fira Code', monospace;
+    /* 		font-family: 'IBM Plex Mono', monospace; */
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+    background: #1d1d1d;
+  }
+
+  .f7 {
+    font-size: .675rem;
+  }
+
+  .sidebar-nav a:hover {
+    text-decoration: underline;
+  }
+
+  @media screen and (min-width: 48em) {
+    .content-frame {
+      margin-left: 20%;
+    }
+  }
+</style>
+
+
+
+
+
+
+
+</head>
+
+<body class="sans-serif h-100">
+
+
+
+
+<div class="w-20-ns w-100 pa3 h-100-ns overflow-auto-ns fixed-ns top-0 left-0">
+  {{> docs-sidebar}}
+</div>
+
+<div class="content-frame w-80-ns w-100 h-100">
+  <div class="h-100 pa3 pl0-ns">
+
+
+
+
+
+
+
+  {{outlet}}
+
+
+
+
+  {{#unless hide_footer}}
+
+    <footer class="tr cf pv3">
+      <div class="f1"><a class="black no-underline" href="https://hxgf.io/">⧉</a></div>
+      <div class="f7 lh-copy">
+        &copy; {{locals.year}} <a class="black" href="https://hxgf.io/">HXGF</a><br />
+        (CC) <a class="black" href="https://creativecommons.org/licenses/by-sa/3.0/us/">BY-SA 3.0</a>
+      </div>
+    </footer>
+
+    <div class="tc pv3">
+      <a target="_blank" href="https://hxgf.io"><img class="w3 dib" src="/images/hxgf-bug.png" /></a><br />
+      <a target="_blank" class="f6 black" href="https://github.com/hxgf/darkwave.ltd">src</a>
+    </div>
+
+    {{/unless}}
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://instant.page/5.1.1" type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+
+
+
+</body>
+
+</html>

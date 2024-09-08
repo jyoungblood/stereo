@@ -27,14 +27,16 @@ $GLOBALS['database'] = isset($_ENV['DB_HOST']) ? \VPHP\db::init([ 'host' => $_EN
 $errorMiddleware = isset($_ENV['SITE_MODE']) && $_ENV['SITE_MODE'] == 'development' ? $app->addErrorMiddleware(true, true, true) : $app->addErrorMiddleware(false, false, false);
 
 $errorMiddleware->setErrorHandler(\Slim\Exception\HttpNotFoundException::class, function ( \Psr\Http\Message\ServerRequestInterface $request, \Throwable $exception, bool $displayErrorDetails, bool $logErrors, bool $logErrorDetails ) {
-  return \Slime\render::hbs($request, new \Slim\Psr7\Response(), [
+
+  return \Slime\render::blade($request, new \Slim\Psr7\Response(), [
     'template' => 'error',
-    'title' => '404 - NOT FOUND',
     'data' => [
+      'title' => '404 - NOT FOUND',
       'status_code' => 404,
       'error_message' => 'This page could not be found.'
     ]
   ], 404);
+
 });
 
 require 'controllers/index.php';

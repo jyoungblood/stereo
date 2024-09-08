@@ -22,9 +22,10 @@
   
   <body class="bg-gray-100 p-3 text-gray-800">
 
-    <header class="bg-gray-500 p-3 flex justify-between items-center">
+{{-- bg-gray-500 p-3 --}}
+    <header class=" flex justify-between items-center">
       <div>
-        <a class="text-white @if ($current_home)  @else opacity-60 @endif text-sm no-underline font-medium hover:opacity-100" href="/">
+        <a class=" @if ($current_home)  @else opacity-60 @endif text-sm no-underline font-medium hover:opacity-100" href="/">
 {{-- 
           <svg class="w-8 h-8" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
             stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
@@ -36,9 +37,9 @@
 
 <svg class="h-6 w-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 298 274">
   <g fill="none" fill-rule="evenodd">
-    <rect width="57" height="103" x="205.5" y="164.5" fill="#fff" stroke="#fff" rx="8"/>
-    <rect width="57" height="103" x="35.5" y="164.5" fill="#fff" stroke="#fff" rx="8"/>
-    <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="19" d="M13,246.877831 C13,204.339675 13,343.972343 13,156.559576 C13,-30.8531919 285,-30.8531919 285,156.559576 C285,343.972343 285,206.23212 285,246.877831"/>
+    <rect width="57" height="103" x="205.5" y="164.5" fill="#000" stroke="#000" rx="8"/>
+    <rect width="57" height="103" x="35.5" y="164.5" fill="#000" stroke="#000" rx="8"/>
+    <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="19" d="M13,246.877831 C13,204.339675 13,343.972343 13,156.559576 C13,-30.8531919 285,-30.8531919 285,156.559576 C285,343.972343 285,206.23212 285,246.877831"/>
   </g>
 </svg>
 
@@ -46,9 +47,9 @@
         </a>
       </div>
       <div>
-        &nbsp;&nbsp; <a class="text-white @if ($current_demo)  @else opacity-60 @endif text-sm no-underline font-medium hover:opacity-100" href="/demo">DEMO</a> 
-        &nbsp;&nbsp; <a class="text-white @if ($current_hello)  @else opacity-60 @endif text-sm no-underline font-medium hover:opacity-100" href="/hello/human">HELLO</a> 
-        &nbsp;&nbsp; <a class="text-white @if ($current_json)  @else opacity-60 @endif text-sm no-underline font-medium hover:opacity-100" href="/json">JSON</a> 
+        &nbsp;&nbsp; <a class="text-black @if ($current_demo)  @else opacity-60 @endif text-sm no-underline font-medium hover:opacity-100" href="/demo">DEMO</a> 
+        &nbsp;&nbsp; <a class="text-black @if ($current_hello)  @else opacity-60 @endif text-sm no-underline font-medium hover:opacity-100" href="/hello/human">HELLO</a> 
+        &nbsp;&nbsp; <a class="text-black @if ($current_json)  @else opacity-60 @endif text-sm no-underline font-medium hover:opacity-100" href="/json">JSON</a> 
       </div>
     </header>
 
@@ -57,9 +58,16 @@
     </main>
 
     <script src="https://instant.page/5.1.1" type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
-
-    <footer class="bg-gray-300 p-3 text-xs text-right text-gray-500">
-      &copy; {{ date('Y') }} {{ $_ENV['SITE_TITLE'] }}
+{{-- bg-gray-300 p-3  --}}
+    <footer class="text-xs text-gray-500">
+      <div class="flex justify-between">
+        <div>
+          &copy; {{ date('Y') }} {{ $_ENV['SITE_TITLE'] }}
+        </div>
+        <div>
+          All Rights Reserved
+        </div>
+      </div>
     </footer>
 
   </body>

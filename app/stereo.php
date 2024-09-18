@@ -13,9 +13,9 @@
 
 */
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
-\Dotenv\Dotenv::createImmutable(__DIR__)->load();
+\Dotenv\Dotenv::createImmutable(__DIR__ . '/../')->load();
 
 $app = \Slim\Factory\AppFactory::create();
 $app->addBodyParsingMiddleware();
@@ -39,6 +39,7 @@ $errorMiddleware->setErrorHandler(\Slim\Exception\HttpNotFoundException::class, 
 
 });
 
-require 'controllers/index.php';
+require 'routes/index.php';
 
-$app->run();
+// $app->run();
+return $app;

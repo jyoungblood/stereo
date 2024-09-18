@@ -30,7 +30,7 @@ While it produces a reliable final product, this configuration focuses on develo
 
 - [AlpineJS](https://alpinejs.dev/)
     
-- Simple organization - folders for css, js, images, templates, and controllers
+- Simple organization - folders for css, js, images, templates, and routes
 
 - Blank CSS and JS placeholder files
 
@@ -73,7 +73,7 @@ mv .env.example .env
 ## Usage
 STEREO will work locally with PHP's built-in server:
 ```
-php -S localhost:8080
+php -S localhost:8080 -t public/
 ```
 
 which is also conveniently aliased with a composer script:
@@ -84,7 +84,7 @@ composer start
 Alternatively, you could use [Herd](https://herd.laravel.com/), which is an excellent tool for local development.
 
 
-See [controllers/index.php](https://github.com/jyoungblood/stereo/blob/master/controllers/index.php) for an example of routing and template rendering.
+See [app/index.php](https://github.com/jyoungblood/stereo/blob/master/app/index.php) for an example of routing and template rendering.
 
 
 

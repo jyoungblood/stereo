@@ -7,9 +7,6 @@
 use Slime\render;
 
 
-
-
-
 $app->get('/', function ($req, $res, $args) {
 
   return render::blade($req, $res, [

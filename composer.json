@@ -22,7 +22,10 @@
     "alpinejs"
   ],
   "scripts": {
-    "start": "php -S localhost:8080 -t public/"
+    "start": [
+      "Composer\\Config::disableProcessTimeout",
+      "php -S localhost:8080 -t public/"
+    ]
   },
   "require": {
     "slim/slim": "4.*",

@@ -20,9 +20,25 @@ require __DIR__ . '/../vendor/autoload.php';
 $app = \Slim\Factory\AppFactory::create();
 $app->addBodyParsingMiddleware();
 
-// removing LOCALS for stereo
-// $GLOBALS['locals'] = [ 'year' => date('Y'), 'site_title' => isset($_ENV['SITE_TITLE']) ? $_ENV['SITE_TITLE'] : false, 'site_code' => isset($_ENV['SITE_CODE']) ? $_ENV['SITE_CODE'] : false, 'site_url' => isset($_ENV['SITE_URL']) ? $_ENV['SITE_URL'] : false ];
-$GLOBALS['database'] = isset($_ENV['DB_HOST']) ? \VPHP\db::init([ 'host' => $_ENV['DB_HOST'], 'name' => $_ENV['DB_NAME'], 'user' => $_ENV['DB_USER'], 'password' => $_ENV['DB_PASSWORD'] ]) : false;
+require 'settings.php';
+
+
+// $GLOBALS['database'] = isset($_ENV['DB_HOST']) ? \VPHP\db::init([ 'host' => $_ENV['DB_HOST'], 'name' => $_ENV['DB_NAME'], 'user' => $_ENV['DB_USER'], 'password' => $_ENV['DB_PASSWORD'] ]) : false;
+
+if (isset($_ENV['DB_HOST'])){
+  $db_init = [ 'host' => $_ENV['DB_HOST'], 'name' => $_ENV['DB_NAME'], 'user' => $_ENV['DB_USER'], 'password' => $_ENV['DB_PASSWORD'] ];
+  if (isset($_ENV['DB_PORT'])){
+    $db_init['port'] = $_ENV['DB_PORT'];
+  }
+  if (isset($_ENV['DB_DRIVER'])){
+    $db_init['driver'] = $_ENV['DB_DRIVER'];
+  }
+  if (isset($_ENV['DB_CHARSET'])){
+    $db_init['charset'] = $_ENV['DB_CHARSET'];
+  }
+  $GLOBALS['database'] = \VPHP\db::init($db_init);
+}
+
 
 $errorMiddleware = isset($_ENV['SITE_MODE']) && $_ENV['SITE_MODE'] == 'development' ? $app->addErrorMiddleware(true, true, true) : $app->addErrorMiddleware(false, false, false);
 
@@ -39,7 +55,11 @@ $errorMiddleware->setErrorHandler(\Slim\Exception\HttpNotFoundException::class, 
 
 });
 
-require 'routes/index.php';
+// fixit need a faster way to do this
+  // fixit include subdirectories
+foreach (glob(__DIR__ . '/routes/*.php') as $file) {
+  require $file;
+}
 
-// $app->run();
+
 return $app;

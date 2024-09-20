@@ -23,22 +23,7 @@ $app->addBodyParsingMiddleware();
 require 'settings.php';
 
 
-// $GLOBALS['database'] = isset($_ENV['DB_HOST']) ? \VPHP\db::init([ 'host' => $_ENV['DB_HOST'], 'name' => $_ENV['DB_NAME'], 'user' => $_ENV['DB_USER'], 'password' => $_ENV['DB_PASSWORD'] ]) : false;
-
-if (isset($_ENV['DB_HOST'])){
-  $db_init = [ 'host' => $_ENV['DB_HOST'], 'name' => $_ENV['DB_NAME'], 'user' => $_ENV['DB_USER'], 'password' => $_ENV['DB_PASSWORD'] ];
-  if (isset($_ENV['DB_PORT'])){
-    $db_init['port'] = $_ENV['DB_PORT'];
-  }
-  if (isset($_ENV['DB_DRIVER'])){
-    $db_init['driver'] = $_ENV['DB_DRIVER'];
-  }
-  if (isset($_ENV['DB_CHARSET'])){
-    $db_init['charset'] = $_ENV['DB_CHARSET'];
-  }
-  $GLOBALS['database'] = \VPHP\db::init($db_init);
-}
-
+$GLOBALS['database'] = \VPHP\db::init([ 'host' => $_ENV['DB_HOST'], 'name' => $_ENV['DB_NAME'], 'user' => $_ENV['DB_USER'], 'password' => $_ENV['DB_PASSWORD'], 'port' => isset($_ENV['DB_PORT']) ? $_ENV['DB_PORT'] : null, 'driver' => isset($_ENV['DB_DRIVER']) ? $_ENV['DB_DRIVER'] : null, 'charset' => isset($_ENV['DB_CHARSET']) ? $_ENV['DB_CHARSET'] : null ]);
 
 $errorMiddleware = isset($_ENV['SITE_MODE']) && $_ENV['SITE_MODE'] == 'development' ? $app->addErrorMiddleware(true, true, true) : $app->addErrorMiddleware(false, false, false);
 
@@ -58,51 +43,12 @@ $errorMiddleware->setErrorHandler(\Slim\Exception\HttpNotFoundException::class, 
 
 
 
-// this SHOULD be the fastest way to load all the routes
 
 $finder = new \Symfony\Component\Finder\Finder();
 
 foreach ($finder->files()->in(__DIR__ . '/routes')->name('*.php') as $file) {
   require_once $file->getRealPath();
 }
-
-
-
-
-// this works exactly how i want it to, i don't know how efficient it is
-
-// $routesDir = __DIR__ . '/routes';
-// $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($routesDir));
-// $phpFiles = new RegexIterator($iterator, '/\.php$/i', RecursiveRegexIterator::GET_MATCH);
-
-// foreach ($phpFiles as $filePath => $fileInfo) {
-//   require_once $filePath;
-// }
-
-
-
-
-
-// alt version of this...seems kinda fishy
-
-// function requirePhpFiles($dir, $app) {
-//     $files = glob($dir . '/*.php');
-//     foreach ($files as $file) {
-//         if (is_file($file) && filesize($file) > 0) {
-//             require $file;
-//         }
-//     }
-    
-//     $subdirs = glob($dir . '/*', GLOB_ONLYDIR);
-//     foreach ($subdirs as $subdir) {
-//         requirePhpFiles($subdir, $app);
-//     }
-// }
-
-// $routesDir = __DIR__ . '/routes';
-// requirePhpFiles($routesDir, $app);
-
-
 
 
 

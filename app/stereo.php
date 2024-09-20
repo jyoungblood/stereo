@@ -55,11 +55,55 @@ $errorMiddleware->setErrorHandler(\Slim\Exception\HttpNotFoundException::class, 
 
 });
 
-// fixit need a faster way to do this
-  // fixit include subdirectories
-foreach (glob(__DIR__ . '/routes/*.php') as $file) {
-  require $file;
+
+
+
+// this SHOULD be the fastest way to load all the routes
+
+$finder = new \Symfony\Component\Finder\Finder();
+
+foreach ($finder->files()->in(__DIR__ . '/routes')->name('*.php') as $file) {
+  require_once $file->getRealPath();
 }
+
+
+
+
+// this works exactly how i want it to, i don't know how efficient it is
+
+// $routesDir = __DIR__ . '/routes';
+// $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($routesDir));
+// $phpFiles = new RegexIterator($iterator, '/\.php$/i', RecursiveRegexIterator::GET_MATCH);
+
+// foreach ($phpFiles as $filePath => $fileInfo) {
+//   require_once $filePath;
+// }
+
+
+
+
+
+// alt version of this...seems kinda fishy
+
+// function requirePhpFiles($dir, $app) {
+//     $files = glob($dir . '/*.php');
+//     foreach ($files as $file) {
+//         if (is_file($file) && filesize($file) > 0) {
+//             require $file;
+//         }
+//     }
+    
+//     $subdirs = glob($dir . '/*', GLOB_ONLYDIR);
+//     foreach ($subdirs as $subdir) {
+//         requirePhpFiles($subdir, $app);
+//     }
+// }
+
+// $routesDir = __DIR__ . '/routes';
+// requirePhpFiles($routesDir, $app);
+
+
+
 
 
 return $app;

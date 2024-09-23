@@ -24,21 +24,18 @@
   "scripts": {
     "start": [
       "Composer\\Config::disableProcessTimeout",
-      "php -S localhost:8080 -t public/"
+      "php -S localhost:6969 -t public/"
     ]
   },
   "require": {
     "slim/slim": "4.*",
     "slim/psr7": "^1.6.1",
-    "zordius/lightncandy": "^1.2",
     "jyoungblood/dbkit": "^1.2",
     "jyoungblood/cookie": "^1.1",
     "jyoungblood/http-request": "^1.2",
     "jyoungblood/x-utilities": "^1.2",
-    "jyoungblood/slime-render": "^1.3",
     "vlucas/phpdotenv": "^5.6",
-    "eftec/bladeone": "^4.13",
-    "eftec/bladeonehtml": "^2.4",
-    "symfony/finder": "^7.1"
+    "symfony/finder": "^7.1",
+    "jyoungblood/stereo-render": "^1.0"
   }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "03d928773175cccb93833d4556ca5be9",
+    "content-hash": "7961fc2c185083af6720951335d43057",
     "packages": [
         {
             "name": "eftec/bladeone",
@@ -421,23 +421,27 @@
             "time": "2023-01-17T20:25:42+00:00"
         },
         {
-            "name": "jyoungblood/slime-render",
-            "version": "1.3.3",
+            "name": "jyoungblood/stereo-render",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jyoungblood/slime-render.git",
-                "reference": "f3cfd4fc31ddf8de85e014bc8e6bf1b895be4a7f"
+                "url": "https://github.com/jyoungblood/stereo-render.git",
+                "reference": "1447a0efc114907874827d70956726f5adda1718"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jyoungblood/slime-render/zipball/f3cfd4fc31ddf8de85e014bc8e6bf1b895be4a7f",
-                "reference": "f3cfd4fc31ddf8de85e014bc8e6bf1b895be4a7f",
+                "url": "https://api.github.com/repos/jyoungblood/stereo-render/zipball/1447a0efc114907874827d70956726f5adda1718",
+                "reference": "1447a0efc114907874827d70956726f5adda1718",
                 "shasum": ""
+            },
+            "require": {
+                "eftec/bladeone": "^4.13",
+                "eftec/bladeonehtml": "^2.4"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Slime\\": [
+                    "Stereo\\": [
                         "src/"
                     ]
                 }
@@ -452,22 +456,20 @@
                     "email": "jy@hxgf.io"
                 }
             ],
-            "description": "PHP abstraction functions to help more easily render views for Slim Framework with Handlebars (LightnCandy).",
-            "homepage": "https://github.com/jyoungblood/slime-render",
+            "description": "PHP abstraction functions to help more easily render views for Slim Framework. Includes support for JSON, HTML, and Blade.",
+            "homepage": "https://github.com/jyoungblood/stereo-render",
             "keywords": [
-                "handlebars",
-                "lightncandy",
-                "mustache",
+                "blade",
                 "render abstractions",
                 "slim",
                 "utilities",
                 "view helpers"
             ],
             "support": {
-                "issues": "https://github.com/jyoungblood/slime-render/issues",
-                "source": "https://github.com/jyoungblood/slime-render/tree/1.3.3"
+                "issues": "https://github.com/jyoungblood/stereo-render/issues",
+                "source": "https://github.com/jyoungblood/stereo-render/tree/1.0.0"
             },
-            "time": "2024-09-07T20:00:05+00:00"
+            "time": "2024-09-20T16:25:25+00:00"
         },
         {
             "name": "jyoungblood/x-utilities",
@@ -1588,62 +1590,6 @@
                 }
             ],
             "time": "2023-11-12T22:43:29+00:00"
-        },
-        {
-            "name": "zordius/lightncandy",
-            "version": "v1.2.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zordius/lightncandy.git",
-                "reference": "b451f73e8b5c73e62e365997ba3c993a0376b72a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/zordius/lightncandy/zipball/b451f73e8b5c73e62e365997ba3c993a0376b72a",
-                "reference": "b451f73e8b5c73e62e365997ba3c993a0376b72a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=7"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.2.5-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "LightnCandy\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Zordius Chen",
-                    "email": "zordius@gmail.com"
-                }
-            ],
-            "description": "An extremely fast PHP implementation of handlebars ( http://handlebarsjs.com/ ) and mustache ( http://mustache.github.io/ ).",
-            "homepage": "https://github.com/zordius/lightncandy",
-            "keywords": [
-                "handlebars",
-                "logicless",
-                "mustache",
-                "php",
-                "template"
-            ],
-            "support": {
-                "issues": "https://github.com/zordius/lightncandy/issues",
-                "source": "https://github.com/zordius/lightncandy/tree/v1.2.6"
-            },
-            "time": "2021-07-11T04:52:41+00:00"
         }
     ],
     "packages-dev": [],

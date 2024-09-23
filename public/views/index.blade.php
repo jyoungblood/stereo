@@ -7,22 +7,17 @@
   <div class="flex justify-center items-center h-full">
     <div class="text-center">
 
-      <div class="font-bold text-2xl">IN THIS ARID WILDERNESS OF STEEL AND STONE</div>
-      <div class="font-bold text-2xl">I LIFT UP MY VOICE SO THAT YOU MAY HEAR</div>
+      <a href="/demo" class="opacity-40 hover:opacity-80">
+        <svg class="h-30 mb-8 w-auto mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 298 274">
+          <g fill="none" fill-rule="evenodd">
+            <rect width="57" height="103" x="205.5" y="164.5" fill="#000" stroke="#000" rx="8"/>
+            <rect width="57" height="103" x="35.5" y="164.5" fill="#000" stroke="#000" rx="8"/>
+            <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="19" d="M13,246.877831 C13,204.339675 13,343.972343 13,156.559576 C13,-30.8531919 285,-30.8531919 285,156.559576 C285,343.972343 285,206.23212 285,246.877831"/>
+          </g>
+        </svg>
+      </a>
 
-
-{{-- 
-
-  @php
-    $test_list = \VPHP\db::find('test_static', 'id IS NOT NULL');
-  @endphp
-
-  @foreach($test_list['data'] as $test)
-    <p class="mb-3"><b>{{ $test['title'] }}</b> <span class="text-gray-400">({{ $test['subtitle'] }})</span></p>
-  @endforeach
-
- --}}
-
+      <a class="text-gray-400 hover:text-gray-800 font-semibold" href="https://stereotk.com">( ( IN STEREO ) ) <span class="block text-xs mt-1">WHERE AVAILABLE</span></a>
 
     </div>
   </div>

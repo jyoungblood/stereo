@@ -29,7 +29,7 @@ $errorMiddleware = isset($_ENV['SITE_MODE']) && $_ENV['SITE_MODE'] == 'developme
 
 $errorMiddleware->setErrorHandler(\Slim\Exception\HttpNotFoundException::class, function ( \Psr\Http\Message\ServerRequestInterface $request, \Throwable $exception, bool $displayErrorDetails, bool $logErrors, bool $logErrorDetails ) {
 
-  return \Slime\render::blade($request, new \Slim\Psr7\Response(), [
+  return \Stereo\render::blade($request, new \Slim\Psr7\Response(), [
     'template' => 'error',
     'data' => [
       'title' => '404 - NOT FOUND',

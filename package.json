@@ -1,11 +1,9 @@
 {
   "devDependencies": {
-    "tailwindcss": "^3.4.7"
+    "tailwindcss": "^3.4.7",
+    "concurrently": "^9.0.1"
   },
   "scripts": {
-    "dev": "concurrently --names 'NPM,COMPOSER' --prefix-colors 'yellow,blue' --kill-others 'npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/lib/tailwind.min.css --watch --minify' 'composer start'"
-  },
-  "dependencies": {
-    "concurrently": "^9.0.1"
+    "dev": "concurrently --names 'NPM,COMPOSER' --prefix-colors 'magenta,yellow' --kill-others 'npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/lib/tailwind.min.css --watch --minify' 'composer start'"
   }
 }

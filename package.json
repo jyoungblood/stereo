@@ -3,6 +3,9 @@
     "tailwindcss": "^3.4.7"
   },
   "scripts": {
-    "dev": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/lib/tailwind.min.css --watch --minify"
+    "dev": "concurrently --names 'NPM,COMPOSER' --prefix-colors 'yellow,blue' --kill-others 'npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/lib/tailwind.min.css --watch --minify' 'composer start'"
+  },
+  "dependencies": {
+    "concurrently": "^9.0.1"
   }
 }

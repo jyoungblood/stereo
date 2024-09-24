@@ -43,13 +43,11 @@ $errorMiddleware->setErrorHandler(\Slim\Exception\HttpNotFoundException::class, 
 
 
 
-
 $finder = new \Symfony\Component\Finder\Finder();
 
 foreach ($finder->files()->in(__DIR__ . '/routes')->name('*.php') as $file) {
   require_once $file->getRealPath();
 }
-
 
 
 return $app;

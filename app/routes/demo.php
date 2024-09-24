@@ -7,7 +7,9 @@ use Stereo\render;
 
 $app->get('/demo[/]', function ($req, $res, $args) {
 
+  // $test_list = \VPHP\db::find('test_static', 'id IS NOT NULL');
 
+  // print_r($test_list);
 
   return render::blade($req, $res, [
     'template' => 'demo.index',
@@ -28,8 +30,6 @@ $app->get('/demo[/]', function ($req, $res, $args) {
 
 
 $app->get('/elements[/]', function ($req, $res, $args) {
-
-
 
   return render::blade($req, $res, [
     'template' => 'demo.elements',

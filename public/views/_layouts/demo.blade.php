@@ -19,8 +19,8 @@
     
   </head>
 
-  
-  <body class="bg-gray-100 p-3 text-gray-800">
+  {{-- bg-gray-100 --}}
+  <body class=" p-3 text-gray-800">
 
 {{-- bg-gray-500 p-3 --}}
 {{-- bg-green-600 --}}

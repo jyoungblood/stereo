@@ -7,7 +7,7 @@
   <div class="flex justify-center items-center h-full">
     <div class="text-center">
 
-      <a href="/demo" class="opacity-40 hover:opacity-80">
+      <a href="/demo" class="opacity-30 hover:opacity-80">
         <svg class="h-30 mb-8 w-auto mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 298 274">
           <g fill="none" fill-rule="evenodd">
             <rect width="57" height="103" x="205.5" y="164.5" fill="#000" stroke="#000" rx="8"/>
@@ -17,7 +17,7 @@
         </svg>
       </a>
 
-      <a class="text-gray-400 hover:text-gray-800 font-semibold" href="https://stereotk.com">( ( IN STEREO ) ) <span class="block text-xs mt-1">WHERE AVAILABLE</span></a>
+      <a class="text-black opacity-30 hover:opacity-80 font-semibold" href="https://stereotk.com">( ( IN STEREO ) ) <span class="block text-xs mt-1">WHERE AVAILABLE</span></a>
 
     </div>
   </div>

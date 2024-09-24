@@ -422,16 +422,16 @@
         },
         {
             "name": "jyoungblood/stereo-render",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jyoungblood/stereo-render.git",
-                "reference": "1447a0efc114907874827d70956726f5adda1718"
+                "reference": "7ffdfbcf3ba6fa22fac09ee8f29d5d251d0c0d65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jyoungblood/stereo-render/zipball/1447a0efc114907874827d70956726f5adda1718",
-                "reference": "1447a0efc114907874827d70956726f5adda1718",
+                "url": "https://api.github.com/repos/jyoungblood/stereo-render/zipball/7ffdfbcf3ba6fa22fac09ee8f29d5d251d0c0d65",
+                "reference": "7ffdfbcf3ba6fa22fac09ee8f29d5d251d0c0d65",
                 "shasum": ""
             },
             "require": {
@@ -467,9 +467,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jyoungblood/stereo-render/issues",
-                "source": "https://github.com/jyoungblood/stereo-render/tree/1.0.0"
+                "source": "https://github.com/jyoungblood/stereo-render/tree/1.0.1"
             },
-            "time": "2024-09-20T16:25:25+00:00"
+            "time": "2024-09-23T23:51:58+00:00"
         },
         {
             "name": "jyoungblood/x-utilities",

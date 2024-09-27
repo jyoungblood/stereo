@@ -11,6 +11,18 @@ $app->get('/demo[/]', function ($req, $res, $args) {
 
   // print_r($test_list);
 
+// echo date_default_timezone_get();
+
+// $settings = $this->get('settings');
+// $settings['test_setting'] = 'baseball';
+// $this->set('settings', $settings);
+
+  // $test_settings = $this->get('settings');
+  // print_r($test_settings);
+
+  // echo $this->get('user_id');
+
+
   return render::blade($req, $res, [
     'template' => 'demo.index',
     'data' => [

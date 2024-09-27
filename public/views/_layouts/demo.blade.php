@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="@relative('/css/styles.css')" />
     @stack('styles')
 
-    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://unpkg.com/alpinejs" defer></script> 
+    <script src="@relative('/js/lib/alpine.collapse.min.js')" defer></script>
+    <script src="@relative('/js/lib/alpine.min.js')" defer></script>
     <script src="@relative('/js/scripts.js')"></script>
+    <script src="@relative('/js/lib/instant.page.min.js')" type="module" defer></script>
     @stack('scripts')
     
   </head>
@@ -59,7 +60,6 @@
     @yield('main')
     </main>
 
-    <script src="https://instant.page/5.1.1" type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
 {{-- bg-gray-300 p-3  --}}
     <footer class="text-xs text-black">
       <div class="flex justify-between">

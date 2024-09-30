@@ -88,14 +88,13 @@ You could also use [Herd](https://herd.laravel.com/), which is an excellent tool
 
 
 
-Additional resources:
+## Additional resources
 - [STEREO Docs](https://stereotk.com/docs)
 - [BladeOne Manual](https://github.com/EFTEC/BladeOne/wiki/BladeOne-Manual)
 - [Slim v4 Routing](https://www.slimframework.com/docs/v4/objects/routing.html)
 - [DB Kit CRUD operations](https://github.com/jyoungblood/dbkit)
 - [TailwindCSS Docs](https://tailwindcss.com/docs)
 - [AlpineJS Docs](https://alpinejs.dev/docs/introduction)
-
 
 
 This project is a perpetual work in progress. [Get in touch](mailto:jonathan.youngblood@gmail.com) if you'd like to get involved.

@@ -2,12 +2,10 @@
 @section('title', $_ENV['SITE_TITLE'])
 @section('main')
 
-
-
   <div class="flex justify-center items-center h-full">
     <div class="text-center">
 
-      <a href="/demo" class="opacity-30 hover:opacity-80">
+      <a href="https://stereotk.com" class="opacity-30 hover:opacity-80">
         <svg class="h-30 mb-8 w-auto mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 298 274">
           <g fill="none" fill-rule="evenodd">
             <rect width="57" height="103" x="205.5" y="164.5" fill="#000" stroke="#000" rx="8"/>
@@ -21,7 +19,5 @@
 
     </div>
   </div>
-
-
 
 @endsection

@@ -60,7 +60,6 @@ $app->get('/elements[/]', function ($req, $res, $args) {
 
 $app->get('/hello/{name}[/]', function ($req, $res, $args) {
   
-
   return render::blade($req, $res, [
     'template' => 'demo.hello',
     'data' => [

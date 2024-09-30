@@ -18,7 +18,7 @@ While it produces a reliable final product, this configuration focuses on develo
 
 - Blade templating - [BladeOne](https://github.com/eftec/bladeone)
 
-- View rendering helpers - [Slime Render](https://github.com/jyoungblood/slime-render)
+- View rendering helpers - [Stereo Render](https://github.com/jyoungblood/stereo-render)
 
 - Helpful Vanilla PHP abstraction libraries:
   - Database handlers - [DB Kit](https://github.com/jyoungblood/dbkit)
@@ -29,18 +29,10 @@ While it produces a reliable final product, this configuration focuses on develo
 - [TailwindCSS](https://tailwindcss.com/)
 
 - [AlpineJS](https://alpinejs.dev/)
+
+- [Instant.page](https://instant.page/)
     
-- Simple organization - folders for css, js, images, templates, and routes
-
-- Blank CSS and JS placeholder files
-
-- [.env](https://github.com/jyoungblood/stereo/blob/master/.env.example) - helpful basic variables and settings, pre-wired with [phpdotenv](https://github.com/vlucas/phpdotenv)
-
-- [index.php](https://github.com/jyoungblood/stereo/blob/master/index.php) - initialized Slim application w/ middleware, db connection, and default 404 configuration
-
-- [.htaccess](https://github.com/jyoungblood/stereo/blob/master/.htaccess) - routes all non-file urls to index, forces https, and uses gzip for static assets (if available)
-
-- [.gitignore](https://github.com/jyoungblood/stereo/blob/master/.gitignore) - ignores `/vendor`, `.env`, `.vscode`, `error_log`, and `.DS_Store`
+- Simple application skeleton
 
 
 
@@ -48,9 +40,9 @@ While it produces a reliable final product, this configuration focuses on develo
 
 
 ## Requirements
-- Apache
 - PHP >= 7.4
 - PDO-compatible database (if using [DB handlers](https://github.com/jyoungblood/dbkit))
+- Apache
 
 
 
@@ -62,33 +54,43 @@ Easy install with composer:
 composer create-project jyoungblood/stereo new-project-name
 ```
 
-Initialize the .env file, using the boilerplate example:
+In the new project directory, initialize the .env file and template cache directory:
 ```
+cd new-project-name
 mv .env.example .env
+mkdir public/cache
+```
+
+(optional) Install Tailwind:
+```
+npm install
 ```
 
 
 
 
-## Usage
-STEREO will work locally with PHP's built-in server:
+## Local Development
+STEREO will work locally with a variety of methods, the simplest being PHP's built-in web server:
 ```
-php -S localhost:8080 -t public/
+php -S localhost:6969 -t public/
 ```
 
-which is also conveniently aliased with a composer script:
+There is also conveniently aliased composer script:
 ```
 composer start
 ```
 
-Alternatively, you could use [Herd](https://herd.laravel.com/), which is an excellent tool for local development.
+If you're using Tailwind, the watcher script and PHP server can be run concurrently with a single command:
+```
+npm run dev
+```
+
+You could also use [Herd](https://herd.laravel.com/), which is an excellent tool for local development.
 
 
-See [app/index.php](https://github.com/jyoungblood/stereo/blob/master/app/index.php) for an example of routing and template rendering.
 
-
-
-Helpful resources:
+Additional resources:
+- [STEREO Docs](https://stereotk.com/docs)
 - [BladeOne Manual](https://github.com/EFTEC/BladeOne/wiki/BladeOne-Manual)
 - [Slim v4 Routing](https://www.slimframework.com/docs/v4/objects/routing.html)
 - [DB Kit CRUD operations](https://github.com/jyoungblood/dbkit)
@@ -97,3 +99,4 @@ Helpful resources:
 
 
 
+This project is a perpetual work in progress. [Get in touch](mailto:jonathan.youngblood@gmail.com) if you'd like to get involved.

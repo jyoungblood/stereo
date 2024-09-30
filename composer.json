@@ -12,10 +12,12 @@
     }
   ],
   "keywords": [
+    "php",
+    "slim-framework",
+    "slim4",
     "boilerplate",
     "starter",
-    "slim4",
-    "slim-framework",
+    "skeleton",
     "blade",
     "bladeone",
     "tailwindcss",

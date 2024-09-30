@@ -19,7 +19,7 @@ Full documentation: [https://stereotk.com/docs](https://stereotk.com/docs)
 
 - View rendering helpers - [Stereo Render](https://github.com/jyoungblood/stereo-render)
 
-- Helpful Vanilla PHP abstraction libraries:
+- Helpful [Vanilla PHP](https://vphp.dev) abstraction libraries:
   - Database handlers - [DB Kit](https://github.com/jyoungblood/dbkit)
   - Cookie handlers - [Cookie](https://github.com/jyoungblood/cookie)
   - Simple HTTP client - [HTTP Request](https://github.com/jyoungblood/http-request) 

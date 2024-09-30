@@ -41,7 +41,7 @@ Full documentation: [https://stereotk.com/docs](https://stereotk.com/docs)
 ## Requirements
 - PHP >= 7.4
 - PDO-compatible database (if using [DB handlers](https://github.com/jyoungblood/dbkit))
-- Apache
+- Apache (for production)
 
 
 

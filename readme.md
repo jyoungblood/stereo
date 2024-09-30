@@ -2,7 +2,8 @@
 
 ### A pragmatic toolkit for internet makers
 
-- Documentation: [https://stereotk.com/](https://stereotk.com/)
+
+Full documentation: [https://stereotk.com/docs](https://stereotk.com/docs)
 
 
 STEREO is a "full stack" tool kit designed to make the process of developing dynamic server-rendered web applications significantly easier and more enjoyable.

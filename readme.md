@@ -2,7 +2,7 @@
 
 ### A pragmatic toolkit for internet makers
 
-STEREO is a "full stack" tool kit designed to make the process of developing dynamic server-rendered web applications significantly easier and more enjoyable.
+Stereo is a "full stack" tool kit designed to make the process of developing dynamic server-rendered web applications significantly easier and more enjoyable.
 
 While it produces a reliable final product, this configuration focuses on developer velocity, making it easy to provide value quickly without introducing unnecessary technical overhead.
 
@@ -69,7 +69,7 @@ npm install
 
 
 ## Local Development
-STEREO will work locally with a variety of methods, the simplest being PHP's built-in web server:
+Stereo will work locally with a variety of methods, the simplest being PHP's built-in web server:
 ```
 php -S localhost:6969 -t public/
 ```

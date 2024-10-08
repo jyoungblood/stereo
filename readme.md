@@ -7,7 +7,7 @@ STEREO is a "full stack" tool kit designed to make the process of developing dyn
 While it produces a reliable final product, this configuration focuses on developer velocity, making it easy to provide value quickly without introducing unnecessary technical overhead.
 
 
-Full documentation: [https://stereotk.com/docs](https://stereotk.com/docs)
+Full documentation: [https://stereotk.com](https://stereotk.com)
 
 
 
@@ -89,7 +89,7 @@ You could also use [Herd](https://herd.laravel.com/), which is an excellent tool
 
 
 ## Additional resources
-- [STEREO Documentation](https://stereotk.com/docs)
+- [STEREO Documentation](https://stereotk.com)
 - [BladeOne Manual](https://github.com/EFTEC/BladeOne/wiki/BladeOne-Manual)
 - [Slim v4 Documentation](https://www.slimframework.com/docs/v4/)
 - [DB Kit CRUD operations](https://github.com/jyoungblood/dbkit)
